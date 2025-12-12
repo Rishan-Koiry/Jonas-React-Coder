@@ -10,12 +10,13 @@ import "./App.css";
 const App = () => {
   const [currentPage, setCurrentPage] = useState("home");
   const [isLoading, setIsLoading] = useState(false);
+  const [menuFilter, setMenuFilter] = useState("all");
 
   const handlePageChange = (page) => {
     setIsLoading(true);
 
     window.scrollTo({ top: 0, behavior: "smooth" });
-1
+
     setTimeout(() => {
       setCurrentPage(page);
       setIsLoading(false);
@@ -29,7 +30,9 @@ const App = () => {
       case "about":
         return <About setCurrentPage={handlePageChange} />;
       case "menu":
-        return <Menu setCurrentPage={handlePageChange} />;
+        return (
+          <Menu setCurrentPage={handlePageChange} filterType={menuFilter} />
+        );
       case "contact":
         return <Contact setCurrentPage={handlePageChange} />;
       default:
@@ -40,7 +43,12 @@ const App = () => {
   return (
     <div>
       {isLoading && <PizzaLoader />}
-      <Navbar currentPage={currentPage} setCurrentPage={handlePageChange} />
+      <Navbar
+        currentPage={currentPage}
+        setCurrentPage={handlePageChange}
+        menuFilter={menuFilter}
+        setMenuFilter={setMenuFilter}
+      />
       {renderPage()}
     </div>
   );

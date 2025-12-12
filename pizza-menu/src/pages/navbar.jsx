@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 import logo from "../assets/logo.png";
 
-const Navbar = ({ currentPage, setCurrentPage }) => {
+const Navbar = ({ currentPage, setCurrentPage, menuFilter, setMenuFilter }) => {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
 
   return (
@@ -51,6 +51,33 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
                 </button>
               </li>
             ))}
+
+            {/* Menu Filter Buttons - Only shown when on menu page */}
+            {currentPage === "menu" && (
+              <li className="flex gap-1 ml-2 border-l-2 border-orange-200 pl-3">
+                <button
+                  onClick={() => setMenuFilter("all")}
+                  className={`font-semibold transition-all duration-200 text-xs px-4 py-2 rounded-full ${
+                    menuFilter === "all"
+                      ? "text-white bg-gradient-to-r from-blue-500 to-blue-600 shadow-md"
+                      : "text-gray-700 hover:text-blue-600 hover:bg-blue-50 border border-gray-300"
+                  }`}
+                >
+                  All Pizzas
+                </button>
+                <button
+                  onClick={() => setMenuFilter("hot")}
+                  className={`font-semibold transition-all duration-200 text-xs px-4 py-2 rounded-full flex items-center gap-1 ${
+                    menuFilter === "hot"
+                      ? "text-white bg-gradient-to-r from-red-500 to-orange-600 shadow-md"
+                      : "text-gray-700 hover:text-red-600 hover:bg-red-50 border border-gray-300"
+                  }`}
+                >
+                  🔥 Hot Sellers
+                </button>
+              </li>
+            )}
+
             <li>
               <button
                 onClick={() => setCurrentPage("contact")}
@@ -112,6 +139,43 @@ const Navbar = ({ currentPage, setCurrentPage }) => {
                   </button>
                 </li>
               ))}
+
+              {/* Mobile Menu Filter Buttons */}
+              {currentPage === "menu" && (
+                <li className="pt-3 border-t border-gray-200">
+                  <p className="text-xs text-gray-500 px-4 mb-2 font-semibold">
+                    FILTER BY:
+                  </p>
+                  <div className="flex gap-2 px-4">
+                    <button
+                      onClick={() => {
+                        setMenuFilter("all");
+                        setIsMobileMenuOpen(false);
+                      }}
+                      className={`flex-1 font-semibold transition-all duration-200 text-xs px-4 py-2 rounded-lg ${
+                        menuFilter === "all"
+                          ? "text-white bg-gradient-to-r from-blue-500 to-blue-600"
+                          : "text-gray-700 bg-gray-100 hover:bg-gray-200"
+                      }`}
+                    >
+                      All
+                    </button>
+                    <button
+                      onClick={() => {
+                        setMenuFilter("hot");
+                        setIsMobileMenuOpen(false);
+                      }}
+                      className={`flex-1 font-semibold transition-all duration-200 text-xs px-4 py-2 rounded-lg ${
+                        menuFilter === "hot"
+                          ? "text-white bg-gradient-to-r from-red-500 to-orange-600"
+                          : "text-gray-700 bg-gray-100 hover:bg-gray-200"
+                      }`}
+                    >
+                      🔥 Hot
+                    </button>
+                  </div>
+                </li>
+              )}
             </ul>
           </div>
         )}
