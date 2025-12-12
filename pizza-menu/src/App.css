@@ -5,6 +5,20 @@
   padding: 0;
 }
 
+/* Custom Animations */
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 3s linear infinite;
+}
+
 /* Navbar Styles */
 .navbar {
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
@@ -358,4 +372,7 @@
   .contact-content {
     grid-template-columns: 1fr;
   }
+}
+button {
+  cursor: pointer;
 }

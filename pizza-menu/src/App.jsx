@@ -1,32 +1,46 @@
-import React, { useState } from "react";
+import { useState } from "react";
 import Navbar from "./pages/navbar";
 import Home from "./pages/Home";
 import About from "./pages/About";
 import Menu from "./pages/menu";
 import Contact from "./pages/Contact";
+import PizzaLoader from "./components/PizzaLoader";
 import "./App.css";
 
 const App = () => {
   const [currentPage, setCurrentPage] = useState("home");
+  const [isLoading, setIsLoading] = useState(false);
+
+  const handlePageChange = (page) => {
+    setIsLoading(true);
+
+    window.scrollTo({ top: 0, behavior: "smooth" });
+1
+    setTimeout(() => {
+      setCurrentPage(page);
+      setIsLoading(false);
+    }, 1000);
+  };
 
   const renderPage = () => {
     switch (currentPage) {
       case "home":
-        return <Home />;
+        return <Home setCurrentPage={handlePageChange} />;
       case "about":
-        return <About />;
+        return <About setCurrentPage={handlePageChange} />;
       case "menu":
-        return <Menu />;
+        return <Menu setCurrentPage={handlePageChange} />;
       case "contact":
-        return <Contact />;
+        return <Contact setCurrentPage={handlePageChange} />;
       default:
-        return <Home />;
+        return <Home setCurrentPage={handlePageChange} />;
     }
   };
 
   return (
     <div>
-      <Navbar currentPage={currentPage} setCurrentPage={setCurrentPage} />
+      {isLoading && <PizzaLoader />}
+      <Navbar currentPage={currentPage} setCurrentPage={handlePageChange} />
       {renderPage()}
     </div>
   );

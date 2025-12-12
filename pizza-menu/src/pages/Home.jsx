@@ -1,21 +1,35 @@
 import React from "react";
+import logo from "../assets/logo.png";
+import Footer from "./Footer";
 
-const Home = () => {
+const Home = ({ setCurrentPage }) => {
   return (
     <div className="min-h-screen bg-gray-50">
       {/* Hero Section */}
-      <section className="bg-gradient-to-br from-orange-50 to-white py-20 px-4">
+      <section className="bg-gradient-to-br from-orange-50 via-white to-orange-50 py-24 px-4">
         <div className="max-w-4xl mx-auto text-center">
+          <div className="mb-6 flex justify-center">
+            <img
+              src={logo}
+              alt="Pizza RK Logo"
+              className="h-20 w-20 object-cover rounded-full shadow-lg hover:shadow-xl transition-shadow duration-300"
+            />
+          </div>
           <h1 className="text-5xl md:text-6xl font-bold text-gray-900 mb-6 tracking-tight">
             Welcome to Pizza RK
           </h1>
-          <p className="text-xl text-gray-600 mb-8 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-lg md:text-xl text-gray-600 mb-10 max-w-2xl mx-auto leading-relaxed">
             The best pizza in town! Fresh ingredients, authentic recipes, and a
             passion for perfection.
           </p>
+          <button
+            onClick={() => setCurrentPage("menu")}
+            className="px-8 py-3 bg-orange-500 hover:bg-orange-600 text-white font-semibold rounded-lg transition-colors duration-200"
+          >
+            Order Now
+          </button>
         </div>
       </section>
-
       {/* Features Section */}
       <section className="py-16 px-4">
         <div className="max-w-6xl mx-auto">
@@ -50,7 +64,6 @@ const Home = () => {
           </div>
         </div>
       </section>
-
       {/* Reviews Section */}
       <section className="py-16 px-4 bg-white">
         <div className="max-w-6xl mx-auto">
@@ -96,6 +109,25 @@ const Home = () => {
           </div>
         </div>
       </section>
+      {/* Call to Action Section */}
+      <section className="bg-gradient-to-r from-orange-500 to-orange-600 py-16 px-4">
+        <div className="max-w-4xl mx-auto text-center">
+          <h2 className="text-3xl md:text-4xl font-bold text-white mb-6">
+            Ready to Taste the Best Pizza?
+          </h2>
+          <p className="text-orange-100 text-lg mb-8">
+            Order now and get 10% off on your first order!
+          </p>
+          <button
+            onClick={() => setCurrentPage("menu")}
+            className="px-8 py-3 bg-white text-orange-600 hover:bg-gray-100 font-semibold rounded-lg transition-colors duration-200 shadow-lg hover:shadow-xl"
+          >
+            View Our Menu
+          </button>
+        </div>
+      </section>
+
+      <Footer setCurrentPage={setCurrentPage} />
     </div>
   );
 };
