@@ -1,20 +1,47 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Footer from "./Footer";
 
 const About = ({ setCurrentPage }) => {
+  const [scrollY, setScrollY] = useState(0);
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
+
   return (
     <>
-      {/* Hero Section */}
-      <div className="relative bg-gradient-to-br from-orange-600 via-red-600 to-orange-700 py-24 px-4 overflow-hidden">
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PHBhdGggZD0iTTM2IDE4YzAgMy4zMTQtMi42ODYgNi02IDZzLTYtMi42ODYtNi02IDIuNjg2LTYgNi02IDYgMi42ODYgNiA2Ii8+PC9nPjwvZz48L3N2Zz4=')] opacity-30"></div>
-        <div className="container mx-auto max-w-4xl text-center relative z-10">
+      {/* Hero Section with Parallax */}
+      <div className="relative h-screen overflow-hidden">
+        {/* Parallax Background Image */}
+        <div
+          className="absolute inset-0 w-full h-full"
+          style={{
+            transform: `translateY(${scrollY * 0.5}px)`,
+            transition: "transform 0.1s ease-out",
+            backgroundImage: "url('/about.jpg')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+            imageRendering: "-webkit-optimize-contrast",
+          }}
+        >
+          <div className="absolute inset-0 bg-black/40"></div>
+        </div>
+
+        {/* Content */}
+        <div className="container mx-auto max-w-4xl text-center relative z-10 h-full flex flex-col justify-center items-center px-4">
           <span className="inline-block bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-bold mb-4">
             OUR STORY
           </span>
           <h1 className="text-6xl md:text-7xl font-black text-white mb-6 drop-shadow-2xl">
             About Pizza RK
           </h1>
-          <p className="text-2xl text-orange-100 font-medium max-w-2xl mx-auto">
+          <p className="text-2xl text-white font-medium max-w-2xl mx-auto drop-shadow-lg">
             Crafting authentic Italian pizzas with passion since 2008
           </p>
         </div>
@@ -163,11 +190,12 @@ const About = ({ setCurrentPage }) => {
             {/* Chef 1 - Image Left */}
             <div className="bg-white rounded-2xl lg:rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300">
               <div className="grid md:grid-cols-2 gap-0">
-                <div className="h-64 md:h-80 lg:h-72 bg-gradient-to-br from-orange-400 to-red-500 flex items-center justify-center overflow-hidden">
+                <div className="bg-gray-100 overflow-hidden flex items-center justify-center">
                   <img
-                    src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=400&h=600&fit=crop"
+                    src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=600&h=800&fit=crop&crop=faces"
                     alt="Marco Rossi"
-                    className="w-full h-full object-cover"
+                    className="w-auto h-auto max-w-full max-h-[400px] object-cover"
+                    style={{ objectPosition: "50% 40%" }}
                   />
                 </div>
                 <div className="p-6 md:p-8 lg:p-10 flex flex-col justify-center">
@@ -218,11 +246,12 @@ const About = ({ setCurrentPage }) => {
                     </span>
                   </div>
                 </div>
-                <div className="order-1 md:order-2 h-64 md:h-80 lg:h-72 bg-gradient-to-br from-red-400 to-orange-500 flex items-center justify-center overflow-hidden">
+                <div className="order-1 md:order-2 bg-gray-100 overflow-hidden flex items-center justify-center">
                   <img
-                    src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=600&fit=crop"
+                    src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=600&h=800&fit=crop&crop=faces"
                     alt="Sofia Martinez"
-                    className="w-full h-full object-cover"
+                    className="w-auto h-auto max-w-full max-h-[400px] object-cover"
+                    style={{ objectPosition: "50% 40%" }}
                   />
                 </div>
               </div>
@@ -231,11 +260,12 @@ const About = ({ setCurrentPage }) => {
             {/* Chef 3 - Image Left */}
             <div className="bg-white rounded-2xl lg:rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300">
               <div className="grid md:grid-cols-2 gap-0">
-                <div className="h-64 md:h-80 lg:h-72 bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center overflow-hidden">
+                <div className="bg-gray-100 overflow-hidden flex items-center justify-center">
                   <img
-                    src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=600&fit=crop"
+                    src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&h=800&fit=crop&crop=faces"
                     alt="Antonio Bianchi"
-                    className="w-full h-full object-cover"
+                    className="w-auto h-auto max-w-full max-h-[400px] object-cover"
+                    style={{ objectPosition: "50% 40%" }}
                   />
                 </div>
                 <div className="p-6 md:p-8 lg:p-10 flex flex-col justify-center">
@@ -284,11 +314,12 @@ const About = ({ setCurrentPage }) => {
                     </span>
                   </div>
                 </div>
-                <div className="order-1 md:order-2 h-64 md:h-80 lg:h-72 bg-gradient-to-br from-green-400 to-teal-500 flex items-center justify-center overflow-hidden">
+                <div className="order-1 md:order-2 bg-gray-100 overflow-hidden flex items-center justify-center">
                   <img
-                    src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=400&h=600&fit=crop"
+                    src="https://images.unsplash.com/photo-1577219491135-ce391730fb2c?w=600&h=800&fit=crop&crop=faces"
                     alt="Giovanni Leone"
-                    className="w-full h-full object-cover"
+                    className="w-auto h-auto max-w-full max-h-[400px] object-cover"
+                    style={{ objectPosition: "50% 40%" }}
                   />
                 </div>
               </div>
@@ -297,11 +328,12 @@ const About = ({ setCurrentPage }) => {
             {/* Chef 5 - Image Left */}
             <div className="bg-white rounded-2xl lg:rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300">
               <div className="grid md:grid-cols-2 gap-0">
-                <div className="h-64 md:h-80 lg:h-72 bg-gradient-to-br from-purple-400 to-pink-500 flex items-center justify-center overflow-hidden">
+                <div className="bg-gray-100 overflow-hidden flex items-center justify-center">
                   <img
-                    src="https://images.unsplash.com/photo-1583394293214-28ded15ee548?w=400&h=600&fit=crop"
+                    src="https://images.unsplash.com/photo-1583394293214-28ded15ee548?w=600&h=800&fit=crop&crop=faces"
                     alt="Elena Romano"
-                    className="w-full h-full object-cover"
+                    className="w-auto h-auto max-w-full max-h-[400px] object-cover"
+                    style={{ objectPosition: "50% 40%" }}
                   />
                 </div>
                 <div className="p-6 md:p-8 lg:p-10 flex flex-col justify-center">
@@ -346,11 +378,12 @@ const About = ({ setCurrentPage }) => {
             {/* Staff 1 - Image Left */}
             <div className="bg-white rounded-2xl lg:rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300">
               <div className="grid md:grid-cols-2 gap-0">
-                <div className="h-64 md:h-80 lg:h-72 bg-gradient-to-br from-blue-400 to-indigo-500 flex items-center justify-center overflow-hidden">
+                <div className="bg-gray-100 overflow-hidden flex items-center justify-center">
                   <img
-                    src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=600&fit=crop"
+                    src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=600&h=800&fit=crop&crop=faces"
                     alt="Isabella Costa"
-                    className="w-full h-full object-cover"
+                    className="w-auto h-auto max-w-full max-h-[400px] object-cover"
+                    style={{ objectPosition: "50% 40%" }}
                   />
                 </div>
                 <div className="p-6 md:p-8 lg:p-10 flex flex-col justify-center">
@@ -400,11 +433,12 @@ const About = ({ setCurrentPage }) => {
                     </span>
                   </div>
                 </div>
-                <div className="order-1 md:order-2 h-64 md:h-80 lg:h-72 bg-gradient-to-br from-teal-400 to-cyan-500 flex items-center justify-center overflow-hidden">
+                <div className="order-1 md:order-2 bg-gray-100 overflow-hidden flex items-center justify-center">
                   <img
-                    src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=400&h=600&fit=crop"
+                    src="https://images.unsplash.com/photo-1560250097-0b93528c311a?w=600&h=800&fit=crop&crop=faces"
                     alt="Lucas Silva"
-                    className="w-full h-full object-cover"
+                    className="w-auto h-auto max-w-full max-h-[400px] object-cover"
+                    style={{ objectPosition: "50% 40%" }}
                   />
                 </div>
               </div>
@@ -413,11 +447,12 @@ const About = ({ setCurrentPage }) => {
             {/* Staff 3 - Image Left */}
             <div className="bg-white rounded-2xl lg:rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300">
               <div className="grid md:grid-cols-2 gap-0">
-                <div className="h-64 md:h-80 lg:h-72 bg-gradient-to-br from-pink-400 to-rose-500 flex items-center justify-center overflow-hidden">
+                <div className="bg-gray-100 overflow-hidden flex items-center justify-center">
                   <img
-                    src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=400&h=600&fit=crop"
+                    src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?w=600&h=800&fit=crop&crop=faces"
                     alt="Maria Santos"
-                    className="w-full h-full object-cover"
+                    className="w-auto h-auto max-w-full max-h-[400px] object-cover"
+                    style={{ objectPosition: "50% 40%" }}
                   />
                 </div>
                 <div className="p-6 md:p-8 lg:p-10 flex flex-col justify-center">

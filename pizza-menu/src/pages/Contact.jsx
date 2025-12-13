@@ -36,16 +36,29 @@ const Contact = ({ setCurrentPage }) => {
   return (
     <>
       {/* Hero Section */}
-      <div className="relative bg-gradient-to-br from-orange-600 via-red-600 to-orange-700 py-24 px-4 overflow-hidden">
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PHBhdGggZD0iTTM2IDE4YzAgMy4zMTQtMi42ODYgNi02IDZzLTYtMi42ODYtNi02IDIuNjg2LTYgNi02IDYgMi42ODYgNiA2Ii8+PC9nPjwvZz48L3N2Zz4=')] opacity-30"></div>
-        <div className="container mx-auto max-w-4xl text-center relative z-10">
+      <div className="relative h-[60vh] overflow-hidden">
+        {/* Background Image */}
+        <div
+          className="absolute inset-0 w-full h-full"
+          style={{
+            backgroundImage: "url('/contact.jpg')",
+            backgroundSize: "cover",
+            backgroundPosition: "center",
+            backgroundRepeat: "no-repeat",
+          }}
+        >
+          <div className="absolute inset-0 bg-black/40"></div>
+        </div>
+
+        {/* Content */}
+        <div className="container mx-auto max-w-4xl text-center relative z-10 h-full flex flex-col justify-center items-center px-4">
           <span className="inline-block bg-white/20 backdrop-blur-sm text-white px-4 py-2 rounded-full text-sm font-bold mb-4">
             GET IN TOUCH
           </span>
           <h1 className="text-6xl md:text-7xl font-black text-white mb-6 drop-shadow-2xl">
             Contact Us
           </h1>
-          <p className="text-2xl text-orange-100 font-medium">
+          <p className="text-2xl text-white font-medium drop-shadow-lg">
             We'd love to hear from you!
           </p>
         </div>
@@ -124,10 +137,10 @@ const Contact = ({ setCurrentPage }) => {
                         Email Us
                       </h3>
                       <a
-                        href="mailto:info@koiryrishan1@gmail.com"
+                        href="mailto:koiryrishan1@gmail.com"
                         className="text-xl font-bold text-orange-600 hover:text-orange-700"
                       >
-                        info@koiryrishan1@gmail.com
+                        koiryrishan1@gmail.com
                       </a>
                       <p className="text-gray-600 mt-1">
                         We'll respond within 24 hours

@@ -23,7 +23,11 @@ const App = () => {
         return <About setCurrentPage={handlePageChange} />;
       case "menu":
         return (
-          <Menu setCurrentPage={handlePageChange} filterType={menuFilter} />
+          <Menu
+            setCurrentPage={handlePageChange}
+            filterType={menuFilter}
+            setMenuFilter={setMenuFilter}
+          />
         );
       case "contact":
         return <Contact setCurrentPage={handlePageChange} />;

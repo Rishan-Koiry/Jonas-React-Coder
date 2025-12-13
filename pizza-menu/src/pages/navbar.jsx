@@ -52,42 +52,6 @@ const Navbar = ({ currentPage, setCurrentPage, menuFilter, setMenuFilter }) => {
               </li>
             ))}
 
-            {/* Menu Filter Buttons - Only shown when on menu page */}
-            {currentPage === "menu" && (
-              <li className="flex gap-1 ml-2 border-l-2 border-orange-200 pl-3">
-                <button
-                  onClick={() => setMenuFilter("all")}
-                  className={`font-semibold transition-all duration-200 text-xs px-3 py-2 rounded-full ${
-                    menuFilter === "all"
-                      ? "text-white bg-gradient-to-r from-blue-500 to-blue-600 shadow-md"
-                      : "text-gray-700 hover:text-blue-600 hover:bg-blue-50 border border-gray-300"
-                  }`}
-                >
-                  All Pizza
-                </button>
-                <button
-                  onClick={() => setMenuFilter("hot")}
-                  className={`font-semibold transition-all duration-200 text-xs px-3 py-2 rounded-full flex items-center gap-1 ${
-                    menuFilter === "hot"
-                      ? "text-white bg-gradient-to-r from-red-500 to-orange-600 shadow-md"
-                      : "text-gray-700 hover:text-red-600 hover:bg-red-50 border border-gray-300"
-                  }`}
-                >
-                  🔥 Hot Pizza
-                </button>
-                <button
-                  onClick={() => setMenuFilter("available")}
-                  className={`font-semibold transition-all duration-200 text-xs px-3 py-2 rounded-full ${
-                    menuFilter === "available"
-                      ? "text-white bg-gradient-to-r from-green-500 to-green-600 shadow-md"
-                      : "text-gray-700 hover:text-green-600 hover:bg-green-50 border border-gray-300"
-                  }`}
-                >
-                  ✓ All Available Pizza
-                </button>
-              </li>
-            )}
-
             <li>
               <button
                 onClick={() => setCurrentPage("contact")}

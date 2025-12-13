@@ -405,9 +405,11 @@ const Home = ({ setCurrentPage }) => {
                 return (
                   <div
                     key={index}
-                    className="group relative bg-white p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-l-4 border-orange-500 overflow-hidden"
+                    className="group relative bg-white p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border-l-4 border-orange-500 overflow-hidden"
                   >
-                    <div className="absolute top-0 right-0 w-32 h-32 bg-orange-100 rounded-full -mr-16 -mt-16 opacity-50"></div>
+                    {/* Corner hover effect - starts as small light yellow and expands */}
+                    <div className="absolute top-0 right-0 w-16 h-16 group-hover:w-48 group-hover:h-48 bg-gradient-to-br from-yellow-300 via-yellow-200 to-transparent rounded-bl-full transition-all duration-500 ease-out opacity-30 group-hover:opacity-60"></div>
+                    <div className="absolute top-0 right-0 w-20 h-20 group-hover:w-56 group-hover:h-56 bg-gradient-to-br from-orange-300 via-yellow-100 to-transparent rounded-bl-full transition-all duration-700 ease-out opacity-20 group-hover:opacity-40"></div>
                     <div className="relative z-10">
                       <div className="flex mb-6 text-2xl">
                         <span className="text-yellow-400">

@@ -5,7 +5,7 @@ import hawaiImage from "../assets/hawalini.png";
 import piparoniImage from "../assets/piparoni.png";
 import veggiImage from "../assets/veggi.png";
 
-const Menu = ({ setCurrentPage, filterType = "all" }) => {
+const Menu = ({ setCurrentPage, filterType = "all", setMenuFilter }) => {
   const [selectedPizza, setSelectedPizza] = React.useState(null);
 
   const pizzas = [
@@ -223,7 +223,7 @@ const Menu = ({ setCurrentPage, filterType = "all" }) => {
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 text-center mb-4">
               Our Menu
             </h1>
-            <p className="text-gray-600 text-center mb-12 text-lg">
+            <p className="text-gray-600 text-center mb-8 text-lg">
               {filterType === "hot"
                 ? "🔥 Hot & Trending Pizzas - Most Loved by Our Customers!"
                 : filterType === "all"
@@ -234,6 +234,41 @@ const Menu = ({ setCurrentPage, filterType = "all" }) => {
                 ? "🔥 Hot Pizzas - All Hot Sellers"
                 : "Discover our delicious selection of pizzas"}
             </p>
+
+            {/* Filter Buttons */}
+            <div className="flex flex-wrap justify-center gap-3 mb-12">
+              <button
+                onClick={() => setMenuFilter("all")}
+                className={`font-semibold transition-all duration-300 text-sm px-6 py-3 rounded-full shadow-md hover:shadow-lg transform hover:scale-105 ${
+                  filterType === "all"
+                    ? "text-white bg-gradient-to-r from-blue-500 to-blue-600"
+                    : "text-gray-700 bg-white hover:text-blue-600 hover:bg-blue-50 border-2 border-gray-300"
+                }`}
+              >
+                All Pizza
+              </button>
+              <button
+                onClick={() => setMenuFilter("hot")}
+                className={`font-semibold transition-all duration-300 text-sm px-6 py-3 rounded-full shadow-md hover:shadow-lg transform hover:scale-105 flex items-center gap-2 ${
+                  filterType === "hot"
+                    ? "text-white bg-gradient-to-r from-red-500 to-orange-600"
+                    : "text-gray-700 bg-white hover:text-red-600 hover:bg-red-50 border-2 border-gray-300"
+                }`}
+              >
+                🔥 Hot Pizza
+              </button>
+              <button
+                onClick={() => setMenuFilter("available")}
+                className={`font-semibold transition-all duration-300 text-sm px-6 py-3 rounded-full shadow-md hover:shadow-lg transform hover:scale-105 ${
+                  filterType === "available"
+                    ? "text-white bg-gradient-to-r from-green-500 to-green-600"
+                    : "text-gray-700 bg-white hover:text-green-600 hover:bg-green-50 border-2 border-gray-300"
+                }`}
+              >
+                ✓ All Available Pizza
+              </button>
+            </div>
+
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredPizzas.map((pizza, index) => (
                 <div
