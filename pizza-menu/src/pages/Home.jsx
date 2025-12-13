@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import logo from "../assets/logo.png";
 import Footer from "./Footer";
+import "../index.css";
 
 const Home = ({ setCurrentPage }) => {
   const [selectedFeature, setSelectedFeature] = useState(null);
@@ -88,16 +89,48 @@ const Home = ({ setCurrentPage }) => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-800">
+      <style>{`
+        @keyframes float {
+          0%, 100% { transform: translateY(0px) rotate(0deg); }
+          50% { transform: translateY(-20px) rotate(10deg); }
+        }
+        @keyframes float-slow {
+          0%, 100% { transform: translateY(0px) rotate(0deg); }
+          50% { transform: translateY(-30px) rotate(-10deg); }
+        }
+        @keyframes float-slower {
+          0%, 100% { transform: translateY(0px) rotate(0deg); }
+          50% { transform: translateY(-25px) rotate(8deg); }
+        }
+        .float-pizza { animation: float 6s ease-in-out infinite; }
+        .float-pizza-slow { animation: float-slow 8s ease-in-out infinite; }
+        .float-pizza-slower { animation: float-slower 7s ease-in-out infinite; }
+      `}</style>
       {/* Hero Section */}
       <section className="relative bg-gradient-to-br from-orange-600 via-red-600 to-orange-700 py-32 px-4 overflow-hidden">
-        {/* Animated background elements */}
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-20 left-10 w-72 h-72 bg-orange-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
-          <div className="absolute top-40 right-10 w-72 h-72 bg-red-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse delay-1000"></div>
-          <div className="absolute -bottom-8 left-1/2 w-72 h-72 bg-yellow-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse delay-500"></div>
+        {/* Floating Pizza Slices Background */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="float-pizza absolute top-20 left-10 text-8xl opacity-20">
+            🍕
+          </div>
+          <div className="float-pizza-slow absolute top-40 right-20 text-7xl opacity-15">
+            🍕
+          </div>
+          <div className="float-pizza-slower absolute bottom-32 left-1/4 text-9xl opacity-10">
+            🍕
+          </div>
+          <div className="float-pizza absolute bottom-20 right-10 text-6xl opacity-20">
+            🍕
+          </div>
+          <div className="float-pizza-slow absolute top-1/2 left-1/2 text-8xl opacity-10">
+            🍕
+          </div>
+          <div className="float-pizza-slower absolute top-60 right-1/3 text-7xl opacity-15">
+            🍕
+          </div>
         </div>
 
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PHBhdGggZD0iTTM2IDE4YzAgMy4zMTQtMi42ODYgNi02IDZzLTYtMi42ODYtNi02IDIuNjg2LTYgNi02IDYgMi42ODYgNiA2Ii8+PC9nPjwvZz48L3N2Zz4=')] opacity-30"></div>
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PHBhdGggZD0iTTM2IDE4YzAgMy4zMTQtMi42ODYgNi02IDZzLTYtMi42ODYtNi02IDIuNjg2LTYgNi02IDYgMi42ODYgNiA2Ii8+PC9nPjwvZz48L3N2Zz4=')] opacity-20"></div>
 
         <div className="container mx-auto max-w-7xl px-4 text-center relative z-10">
           <div className="mb-8 flex justify-center">
@@ -108,8 +141,32 @@ const Home = ({ setCurrentPage }) => {
                 alt="Pizza RK Logo"
                 className="relative h-36 w-36 object-cover rounded-full shadow-2xl border-4 border-white/80 backdrop-blur transform group-hover:scale-110 transition-transform duration-300"
               />
-              <div className="absolute -top-3 -right-3 bg-gradient-to-r from-yellow-400 to-yellow-500 text-red-900 text-sm font-black px-4 py-2 rounded-full shadow-xl animate-bounce">
-                10% OFF
+              <div className="absolute -top-3 -right-2 bg-gradient-to-r from-yellow-400 to-yellow-500 text-red-900 text-sm font-black px-4 py-2 rounded-full shadow-xl animate-bounce">
+                {" "}
+                {/* Restaurant Status */}{" "}
+                {(() => {
+                  const now = new Date();
+                  const day = now.getDay();
+                  const hours = now.getHours();
+                  const minutes = now.getMinutes();
+                  const currentTime = hours * 60 + minutes;
+                  const openingTime = day === 0 ? 12 * 60 : 11 * 60;
+                  const closingTime =
+                    day === 5 || day === 6 ? 23 * 60 : 22 * 60;
+                  const isOpen =
+                    (currentTime >= openingTime &&
+                      currentTime < closingTime &&
+                      day !== 0) ||
+                    (day === 0 &&
+                      currentTime >= openingTime &&
+                      currentTime < closingTime);
+                  return (
+                    <div className={`${isOpen ? "" : ""}`}>
+                      {" "}
+                      {isOpen ? "🟢 Open " : "🔴 Closed"}{" "}
+                    </div>
+                  );
+                })()}{" "}
               </div>
             </div>
           </div>
@@ -120,7 +177,7 @@ const Home = ({ setCurrentPage }) => {
             </h1>
             <div className="inline-block bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full border border-white/20">
               <p className="text-2xl md:text-3xl text-yellow-300 font-bold">
-                🔥 Authentic Wood-Fired Perfection 🔥
+                🔥 “Real Wood-Fire. Real Taste. Real Pizza.” 🔥
               </p>
             </div>
             <p className="text-xl md:text-2xl text-orange-100 max-w-3xl mx-auto leading-relaxed font-medium">
@@ -401,16 +458,27 @@ const Home = ({ setCurrentPage }) => {
 
       {/* Call to Action Section */}
       <section className="relative bg-gradient-to-br from-orange-600 via-red-600 to-orange-700 py-32 px-4 overflow-hidden">
-        <div className="absolute inset-0 overflow-hidden">
-          <div className="absolute top-1/4 left-10 w-96 h-96 bg-orange-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
-          <div className="absolute bottom-1/4 right-10 w-96 h-96 bg-yellow-400 rounded-full mix-blend-multiply filter blur-3xl opacity-20 animate-pulse"></div>
+        {/* Floating Pizza Slices */}
+        <div className="absolute inset-0 overflow-hidden pointer-events-none">
+          <div className="float-pizza-slow absolute top-10 left-20 text-7xl opacity-15">
+            🍕
+          </div>
+          <div className="float-pizza absolute top-20 right-32 text-6xl opacity-20">
+            🍕
+          </div>
+          <div className="float-pizza-slower absolute bottom-20 left-10 text-8xl opacity-10">
+            🍕
+          </div>
+          <div className="float-pizza absolute bottom-32 right-20 text-7xl opacity-15">
+            🍕
+          </div>
         </div>
 
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC4xIj48Y2lyY2xlIGN4PSIzMCIgY3k9IjMwIiByPSI1Ii8+PC9nPjwvZz48L3N2Zz4=')] opacity-40"></div>
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC4xIj48Y2lyY2xlIGN4PSIzMCIgY3k9IjMwIiByPSI1Ii8+PC9nPjwvZz48L3N2Zz4=')] opacity-30"></div>
 
         <div className="container mx-auto max-w-5xl text-center relative z-10">
           <div className="inline-block mb-6">
-            <div className="bg-gradient-to-r from-yellow-400 to-yellow-500 text-red-900 font-black text-base px-6 py-3 rounded-full shadow-xl animate-pulse flex items-center gap-2">
+            <div className="bg-gradient-to-r from-yellow-400 to-yellow-500 text-red-900 font-black text-base px-6 py-3 rounded-full shadow-xl flex items-center gap-2">
               <span className="text-2xl">🎉</span>
               <span>SPECIAL FIRST ORDER DISCOUNT</span>
             </div>

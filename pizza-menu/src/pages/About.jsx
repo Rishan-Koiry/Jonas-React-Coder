@@ -165,7 +165,7 @@ const About = ({ setCurrentPage }) => {
               <div className="grid md:grid-cols-2 gap-0">
                 <div className="h-64 md:h-80 lg:h-72 bg-gradient-to-br from-orange-400 to-red-500 flex items-center justify-center overflow-hidden">
                   <img
-                    src="fc.png"
+                    src="https://images.unsplash.com/photo-1556910103-1c02745aae4d?w=400&h=600&fit=crop"
                     alt="Marco Rossi"
                     className="w-full h-full object-cover"
                   />
@@ -220,7 +220,7 @@ const About = ({ setCurrentPage }) => {
                 </div>
                 <div className="order-1 md:order-2 h-64 md:h-80 lg:h-72 bg-gradient-to-br from-red-400 to-orange-500 flex items-center justify-center overflow-hidden">
                   <img
-                    src="mc.png"
+                    src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=400&h=600&fit=crop"
                     alt="Sofia Martinez"
                     className="w-full h-full object-cover"
                   />
@@ -233,7 +233,7 @@ const About = ({ setCurrentPage }) => {
               <div className="grid md:grid-cols-2 gap-0">
                 <div className="h-64 md:h-80 lg:h-72 bg-gradient-to-br from-yellow-400 to-orange-500 flex items-center justify-center overflow-hidden">
                   <img
-                    src="mc2.png"
+                    src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=400&h=600&fit=crop"
                     alt="Antonio Bianchi"
                     className="w-full h-full object-cover"
                   />

@@ -3,11 +3,34 @@ import Footer from "./Footer";
 
 const Contact = ({ setCurrentPage }) => {
   const [formSubmitted, setFormSubmitted] = useState(false);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    setFormSubmitted(true);
-    setTimeout(() => setFormSubmitted(false), 3000);
+    setIsSubmitting(true);
+
+    const form = e.target;
+    const formData = new FormData(form);
+
+    try {
+      const response = await fetch("https://formspree.io/f/xanrvdde", {
+        method: "POST",
+        body: formData,
+        headers: {
+          Accept: "application/json",
+        },
+      });
+
+      if (response.ok) {
+        setFormSubmitted(true);
+        form.reset();
+        setTimeout(() => setFormSubmitted(false), 5000);
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -101,10 +124,10 @@ const Contact = ({ setCurrentPage }) => {
                         Email Us
                       </h3>
                       <a
-                        href="mailto:info@pizzark.com"
+                        href="mailto:info@koiryrishan1@gmail.com"
                         className="text-xl font-bold text-orange-600 hover:text-orange-700"
                       >
-                        info@pizzark.com
+                        info@koiryrishan1@gmail.com
                       </a>
                       <p className="text-gray-600 mt-1">
                         We'll respond within 24 hours
@@ -185,6 +208,7 @@ const Contact = ({ setCurrentPage }) => {
                     </label>
                     <input
                       type="text"
+                      name="name"
                       required
                       placeholder="John Doe"
                       className="w-full px-5 py-4 border-2 border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-600 focus:border-orange-600 outline-none transition-all text-lg"
@@ -197,6 +221,7 @@ const Contact = ({ setCurrentPage }) => {
                     </label>
                     <input
                       type="email"
+                      name="_replyto"
                       required
                       placeholder="john@example.com"
                       className="w-full px-5 py-4 border-2 border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-600 focus:border-orange-600 outline-none transition-all text-lg"
@@ -209,6 +234,7 @@ const Contact = ({ setCurrentPage }) => {
                     </label>
                     <input
                       type="tel"
+                      name="phone"
                       placeholder="(555) 123-4567"
                       className="w-full px-5 py-4 border-2 border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-600 focus:border-orange-600 outline-none transition-all text-lg"
                     />
@@ -218,7 +244,10 @@ const Contact = ({ setCurrentPage }) => {
                     <label className="block text-sm font-bold text-gray-700 mb-2">
                       Subject
                     </label>
-                    <select className="w-full px-5 py-4 border-2 border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-600 focus:border-orange-600 outline-none transition-all text-lg">
+                    <select
+                      name="subject"
+                      className="w-full px-5 py-4 border-2 border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-600 focus:border-orange-600 outline-none transition-all text-lg"
+                    >
                       <option>General Inquiry</option>
                       <option>Catering / Party Booking</option>
                       <option>Feedback</option>
@@ -232,6 +261,7 @@ const Contact = ({ setCurrentPage }) => {
                       Your Message *
                     </label>
                     <textarea
+                      name="message"
                       required
                       rows="5"
                       placeholder="Tell us what's on your mind..."
@@ -241,14 +271,15 @@ const Contact = ({ setCurrentPage }) => {
 
                   <button
                     type="submit"
-                    className="w-full bg-gradient-to-r from-orange-600 to-red-600 text-white px-8 py-5 rounded-xl font-black text-xl hover:from-orange-700 hover:to-red-700 transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105 transform"
+                    disabled={isSubmitting}
+                    className="w-full bg-gradient-to-r from-orange-600 to-red-600 text-white px-8 py-5 rounded-xl font-black text-xl hover:from-orange-700 hover:to-red-700 transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105 transform disabled:opacity-50 disabled:cursor-not-allowed"
                   >
-                    Send Message 🚀
+                    {isSubmitting ? "Sending... ⏳" : "Send Message 🚀"}
                   </button>
                 </form>
 
                 {formSubmitted && (
-                  <div className="mt-6 bg-green-100 border-2 border-green-500 text-green-800 px-6 py-4 rounded-xl font-bold flex items-center gap-3">
+                  <div className="mt-6 bg-green-100 border-2 border-green-500 text-green-800 px-6 py-4 rounded-xl font-bold flex items-center gap-3 animate-pulse">
                     <span className="text-2xl">✅</span>
                     <span>
                       Message sent successfully! We'll get back to you soon.

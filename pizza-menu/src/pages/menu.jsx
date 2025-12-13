@@ -19,6 +19,7 @@ const Menu = ({ setCurrentPage, filterType = "all" }) => {
       isHot: true,
       isVeg: true,
       isAvailable: true,
+      avgrate: 4.8,
     },
     {
       name: "Pepperoni",
@@ -30,6 +31,7 @@ const Menu = ({ setCurrentPage, filterType = "all" }) => {
       isHot: true,
       isVeg: false,
       isAvailable: true,
+      avgrate: 4.8,
     },
     {
       name: "BBQ Chicken",
@@ -41,6 +43,7 @@ const Menu = ({ setCurrentPage, filterType = "all" }) => {
       isHot: false,
       isVeg: false,
       isAvailable: true,
+      avgrate: 4.8,
     },
     {
       name: "Veggie Delight",
@@ -52,6 +55,7 @@ const Menu = ({ setCurrentPage, filterType = "all" }) => {
       isHot: false,
       isVeg: true,
       isAvailable: true,
+      avgrate: 4.8,
     },
     {
       name: "Hawaiian",
@@ -75,6 +79,7 @@ const Menu = ({ setCurrentPage, filterType = "all" }) => {
       isHot: true,
       isVeg: true,
       isAvailable: true,
+      avgrate: 4.8,
     },
     {
       name: "Tandoori Chicken",
@@ -87,6 +92,7 @@ const Menu = ({ setCurrentPage, filterType = "all" }) => {
       isHot: true,
       isVeg: false,
       isAvailable: true,
+      avgrate: 4.8,
     },
     {
       name: "Mexican Fiesta",
@@ -99,6 +105,7 @@ const Menu = ({ setCurrentPage, filterType = "all" }) => {
       isHot: false,
       isVeg: false,
       isAvailable: true,
+      avgrate: 4.8,
     },
     {
       name: "Cheese Burst",
@@ -111,6 +118,7 @@ const Menu = ({ setCurrentPage, filterType = "all" }) => {
       isHot: true,
       isVeg: true,
       isAvailable: true,
+      avgrate: 4.8,
     },
     {
       name: "Spinach Alfredo",
@@ -123,6 +131,7 @@ const Menu = ({ setCurrentPage, filterType = "all" }) => {
       isHot: false,
       isVeg: true,
       isAvailable: true,
+      avgrate: 4.8,
     },
     {
       name: "Chicken Sausage",
@@ -135,6 +144,9 @@ const Menu = ({ setCurrentPage, filterType = "all" }) => {
       isHot: false,
       isVeg: false,
       isAvailable: true,
+      avgrate: 4.8,
+
+      isnonhot: true,
     },
     {
       name: "Paneer Tikka",
@@ -147,6 +159,7 @@ const Menu = ({ setCurrentPage, filterType = "all" }) => {
       isHot: true,
       isVeg: true,
       isAvailable: true,
+      avgrate: 4.8,
     },
     {
       name: "Meat Lovers",
@@ -159,6 +172,7 @@ const Menu = ({ setCurrentPage, filterType = "all" }) => {
       isHot: true,
       isVeg: false,
       isAvailable: true,
+      avgrate: 4.8,
     },
     {
       name: "Mushroom Supreme",
@@ -171,6 +185,7 @@ const Menu = ({ setCurrentPage, filterType = "all" }) => {
       isHot: false,
       isVeg: true,
       isAvailable: true,
+      avgrate: 4.8,
     },
     {
       name: "Pesto Special",
@@ -186,9 +201,19 @@ const Menu = ({ setCurrentPage, filterType = "all" }) => {
     },
   ];
 
-  // Filter pizzas based on filterType
-  const filteredPizzas =
-    filterType === "hot" ? pizzas.filter((pizza) => pizza.isHot) : pizzas;
+  const filteredPizzas = (() => {
+    switch (filterType) {
+      case "all":
+        return pizzas;
+      case "hot":
+        return pizzas.filter((pizza) => pizza.isHot && pizza.isAvailable); // Only hot and available
+      case "available":
+        return pizzas.filter((pizza) => pizza.isAvailable); // Only available
+
+      default:
+        return pizzas.filter((pizza) => pizza.isAvailable);
+    }
+  })();
 
   return (
     <>
@@ -201,18 +226,24 @@ const Menu = ({ setCurrentPage, filterType = "all" }) => {
             <p className="text-gray-600 text-center mb-12 text-lg">
               {filterType === "hot"
                 ? "🔥 Hot & Trending Pizzas - Most Loved by Our Customers!"
+                : filterType === "all"
+                ? "All Our Pizzas - Complete Collection"
+                : filterType === "available"
+                ? "✓ Available Now - Ready to Order!"
+                : filterType === "unavailable"
+                ? "🔥 Hot Pizzas - All Hot Sellers"
                 : "Discover our delicious selection of pizzas"}
             </p>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
               {filteredPizzas.map((pizza, index) => (
                 <div
                   key={index}
-                  className="bg-white p-6 rounded-2xl shadow-sm hover:shadow-lg transition-all duration-200 cursor-pointer relative"
+                  className="bg-white p-6 rounded-2xl shadow-md hover:shadow-2xl transition-all duration-300 cursor-pointer relative group hover:-translate-y-2 border border-gray-100"
                   onClick={() => setSelectedPizza(pizza)}
                 >
                   {/* Hot Badge */}
                   {pizza.isHot && (
-                    <div className="absolute top-3 right-3 bg-red-500 text-white px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1 shadow-lg z-10">
+                    <div className="absolute top-3 right-3 bg-gradient-to-r from-red-500 to-orange-500 text-white px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1 shadow-lg z-10">
                       🔥 Hot
                     </div>
                   )}
@@ -224,13 +255,15 @@ const Menu = ({ setCurrentPage, filterType = "all" }) => {
                     </div>
                   )}
 
-                  <img
-                    src={pizza.imagename}
-                    alt={pizza.name}
-                    className={`w-full h-48 object-cover rounded-lg mb-4 ${
-                      !pizza.isAvailable ? "opacity-50 grayscale" : ""
-                    }`}
-                  />
+                  <div className="relative overflow-hidden rounded-lg mb-4">
+                    <img
+                      src={pizza.imagename}
+                      alt={pizza.name}
+                      className={`w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110 ${
+                        !pizza.isAvailable ? "opacity-50 grayscale" : ""
+                      }`}
+                    />
+                  </div>
 
                   <div className="flex items-center gap-2 mb-2">
                     <h3 className="text-xl font-bold text-gray-900">
@@ -256,27 +289,19 @@ const Menu = ({ setCurrentPage, filterType = "all" }) => {
                       {pizza.price}
                     </span>
                     <button
-                      className={`px-5 py-2 rounded-full transition-colors duration-200 text-sm font-medium ${
+                      className={`px-5 py-2 rounded-full transition-all duration-300 text-sm font-medium shadow-md hover:shadow-lg ${
                         pizza.isAvailable
-                          ? "bg-orange-600 text-white hover:bg-orange-700"
+                          ? "bg-gradient-to-r from-orange-500 to-orange-600 text-white hover:from-orange-600 hover:to-orange-700 transform hover:scale-105"
                           : "bg-slate-400 text-white cursor-not-allowed"
                       }`}
                       onClick={(e) => {
                         e.stopPropagation();
-                        if (pizza.isAvailable) {
-                          alert(`Order placed for ${pizza.name}!`);
-                        } else {
-                          alert("Sorry, this pizza is currently unavailable.");
-                        }
+                        setSelectedPizza(pizza);
                       }}
                     >
-                      {pizza.isAvailable ? "Order Now" : "Unavailable"}
+                      {pizza.isAvailable ? "Order" : "Unavailable"}
                     </button>
                   </div>
-
-                  <p className="text-xs text-gray-400 mt-3 text-center">
-                    Click for more details
-                  </p>
                 </div>
               ))}
             </div>
@@ -299,11 +324,11 @@ const Menu = ({ setCurrentPage, filterType = "all" }) => {
               <img
                 src={selectedPizza.imagename}
                 alt={selectedPizza.name}
-                className="w-full h-64 object-cover rounded-t-2xl"
+                className="w-full h-72 object-cover rounded-t-2xl"
               />
               <button
                 onClick={() => setSelectedPizza(null)}
-                className="absolute top-4 right-4 bg-white rounded-full p-2 shadow-lg hover:bg-gray-100 transition-colors"
+                className="absolute top-4 right-4 bg-white rounded-full p-2 shadow-lg hover:bg-red-500 hover:text-white transition-all duration-300"
               >
                 <svg
                   className="w-6 h-6"
@@ -393,7 +418,7 @@ const Menu = ({ setCurrentPage, filterType = "all" }) => {
                   </p>
                 </div>
                 <div className="bg-gray-50 p-4 rounded-lg">
-                  <p className="text-sm text-gray-600 mb-1">Popularity</p>
+                  <p className="text-sm text-gray-600 mb-1">Pizza Popularity</p>
                   <p className="font-bold text-gray-900">
                     {selectedPizza.isHot ? "🔥 Hot Seller" : "⭐ Regular"}
                   </p>
@@ -402,14 +427,29 @@ const Menu = ({ setCurrentPage, filterType = "all" }) => {
                   <p className="text-sm text-gray-600 mb-1">Status</p>
                   <p className="font-bold text-gray-900">
                     {selectedPizza.isAvailable
-                      ? "✅ In Stock"
-                      : "❌ Out of Stock"}
+                      ? "✅ Available"
+                      : "❌ Unavailable"}
                   </p>
                 </div>
+
                 <div className="bg-gray-50 p-4 rounded-lg">
                   <p className="text-sm text-gray-600 mb-1">Price</p>
                   <p className="font-bold text-orange-600 text-xl">
                     {selectedPizza.price}
+                  </p>
+                </div>
+                <div className="bg-gray-50 p-4 rounded-lg">
+                  <p className="text-sm text-gray-600 mb-1">Popularity</p>
+                  <p className="font-bold text-gray-900">
+                    {selectedPizza.isnonhot ? "❌ Non popular " : "✅ Popular "}
+                  </p>
+                </div>
+                <div className="bg-gray-50 p-4 rounded-lg">
+                  <p className="text-sm text-gray-600 mb-1">Popularity</p>
+                  <p className="font-bold text-gray-900">
+                    {selectedPizza.avgrate
+                      ? `⭐ ${selectedPizza.avgrate} / 5`
+                      : "⭐ N/A"}
                   </p>
                 </div>
               </div>

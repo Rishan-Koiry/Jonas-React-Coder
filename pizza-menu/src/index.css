@@ -1,0 +1,12 @@
+* {
+  cursor: url("/cursor.png"), auto !important;
+}
+
+button,
+a,
+[role="button"],
+input,
+textarea,
+select {
+  cursor: url("/cursor.png"), pointer !important;
+}
