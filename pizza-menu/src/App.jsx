@@ -4,23 +4,15 @@ import Home from "./pages/Home";
 import About from "./pages/About";
 import Menu from "./pages/menu";
 import Contact from "./pages/Contact";
-import PizzaLoader from "./components/PizzaLoader";
 import "./App.css";
 
 const App = () => {
   const [currentPage, setCurrentPage] = useState("home");
-  const [isLoading, setIsLoading] = useState(false);
   const [menuFilter, setMenuFilter] = useState("all");
 
   const handlePageChange = (page) => {
-    setIsLoading(true);
-
     window.scrollTo({ top: 0, behavior: "smooth" });
-
-    setTimeout(() => {
-      setCurrentPage(page);
-      setIsLoading(false);
-    }, 1000);
+    setCurrentPage(page);
   };
 
   const renderPage = () => {
@@ -42,7 +34,6 @@ const App = () => {
 
   return (
     <div>
-      {isLoading && <PizzaLoader />}
       <Navbar
         currentPage={currentPage}
         setCurrentPage={handlePageChange}

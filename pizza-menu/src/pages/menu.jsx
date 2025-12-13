@@ -2,7 +2,6 @@ import React from "react";
 import Footer from "./Footer";
 import bbqImage from "../assets/bbq.png";
 import hawaiImage from "../assets/hawalini.png";
-import margeImage from "../assets/marge.png";
 import piparoniImage from "../assets/piparoni.png";
 import veggiImage from "../assets/veggi.png";
 
@@ -195,7 +194,7 @@ const Menu = ({ setCurrentPage, filterType = "all" }) => {
     <>
       <div className="min-h-screen bg-gray-50">
         <div className="py-16 px-4">
-          <div className="max-w-6xl mx-auto">
+          <div className="container mx-auto max-w-6xl">
             <h1 className="text-4xl md:text-5xl font-bold text-gray-900 text-center mb-4">
               Our Menu
             </h1>
@@ -257,7 +256,11 @@ const Menu = ({ setCurrentPage, filterType = "all" }) => {
                       {pizza.price}
                     </span>
                     <button
-                      className="bg-orange-600 text-white px-5 py-2 rounded-full hover:bg-orange-700 transition-colors duration-200 text-sm font-medium"
+                      className={`px-5 py-2 rounded-full transition-colors duration-200 text-sm font-medium ${
+                        pizza.isAvailable
+                          ? "bg-orange-600 text-white hover:bg-orange-700"
+                          : "bg-slate-400 text-white cursor-not-allowed"
+                      }`}
                       onClick={(e) => {
                         e.stopPropagation();
                         if (pizza.isAvailable) {
@@ -426,7 +429,7 @@ const Menu = ({ setCurrentPage, filterType = "all" }) => {
                   className={`flex-1 py-3 rounded-full font-bold transition-colors ${
                     selectedPizza.isAvailable
                       ? "bg-orange-600 text-white hover:bg-orange-700"
-                      : "bg-gray-300 text-gray-500 cursor-not-allowed"
+                      : "bg-slate-400 text-white cursor-not-allowed"
                   }`}
                 >
                   {selectedPizza.isAvailable
