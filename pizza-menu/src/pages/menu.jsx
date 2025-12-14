@@ -54,7 +54,7 @@ const Menu = ({ setCurrentPage, filterType = "all", setMenuFilter }) => {
       imagename: veggiImage,
       isHot: false,
       isVeg: true,
-      isAvailable: true,
+      isAvailable: false,
       avgrate: 4.8,
     },
     {
