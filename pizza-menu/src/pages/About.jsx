@@ -1,36 +1,19 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 import Footer from "./Footer";
 
 const About = ({ setCurrentPage }) => {
-  const [scrollY, setScrollY] = useState(0);
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrollY(window.scrollY);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
   return (
     <>
-      {/* Hero Section with Parallax */}
+      {/* Hero Section */}
       <div className="relative h-screen overflow-hidden">
-        {/* Parallax Background Image */}
+        {/* Background Image */}
         <div
-          className="absolute inset-0 w-full h-full"
+          className="absolute inset-0 w-full h-full bg-cover bg-center bg-no-repeat"
           style={{
-            transform: `translateY(${scrollY * 0.5}px)`,
-            transition: "transform 0.1s ease-out",
             backgroundImage: "url('/about.jpg')",
-            backgroundSize: "cover",
-            backgroundPosition: "center",
-            backgroundRepeat: "no-repeat",
-            imageRendering: "-webkit-optimize-contrast",
           }}
         >
-          <div className="absolute inset-0 bg-black/40"></div>
+          <div className="absolute inset-0 bg-gradient-to-br from-orange-600/70 to-red-600/60"></div>
         </div>
 
         {/* Content */}
@@ -542,7 +525,7 @@ const About = ({ setCurrentPage }) => {
                     <p className="text-gray-600">
                       Phone: +880 1234-567890
                       <br />
-                      Email: info@pizzark.com
+                      Email: info@koiryrishan1@gmail.com
                     </p>
                   </div>
                 </div>
