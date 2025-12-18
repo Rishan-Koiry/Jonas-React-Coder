@@ -1,9 +1,12 @@
 import React, { useState } from "react";
+import BillInput from "./components/BillInput";
+import TipSelector from "./components/TipSelector";
+import Result from "./components/Result";
 
 const App = () => {
-  const [bill, setBill] = useState("");
-  const [myTip, setMyTip] = useState(null);
-  const [friendTip, setFriendTip] = useState(null);
+  const [bill, setBill] = useState(0);
+  const [myTip, setMyTip] = useState(0);
+  const [friendTip, setFriendTip] = useState(0);
 
   const avgTip = (myTip + friendTip) / 2;
   const tipAmount = bill ? bill * avgTip : 0;
@@ -22,56 +25,25 @@ const App = () => {
           Tip Calculator
         </h1>
 
-        <p className="mb-4">
-          How much was the bill?
-          <input
-            type="number"
-            value={bill}
-            onChange={(bill_input) => setBill(bill_input.target.value)}
-            className="mt-2 w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
-            placeholder="Enter bill amount"
-          />
-        </p>
-
-        <p className="mb-4">
-          How did you like the service?
-          <select
-            onChange={(my_tip) => setMyTip(Number(my_tip.target.value))}
-            className="mt-2 w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
-          >
-            <option value="0">Dissatisfied (0%)</option>
-            <option value="0.1">It was good (10%)</option>
-            <option value="0.2">Amazing (20%)</option>
-          </select>
-        </p>
-
-        <p className="mb-6">
-          How did your friend like the service?
-          <select
-            onChange={(friend_tip) =>
-              setFriendTip(Number(friend_tip.target.value))
-            }
-            className="mt-2 w-full px-4 py-2 border rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
-          >
-            <option value="0">Dissatisfied (0%)</option>
-            <option value="0.1">It was good (10%)</option>
-            <option value="0.2">Amazing (20%)</option>
-          </select>
-        </p>
+        <BillInput bill={bill} setBill={setBill} />
+        <TipSelector
+          label="How did you like the service?"
+          tip={myTip}
+          setTip={setMyTip}
+        />
+        <TipSelector
+          label="How did your friend like the service?"
+          tip={friendTip}
+          setTip={setFriendTip}
+        />
 
         {bill ? (
-          <div className="text-center">
-            <h2 className="text-xl font-semibold text-gray-800 mb-4">
-              You pay <span className="text-blue-500">${total.toFixed(0)}</span>{" "}
-              ( ${bill} + ${tipAmount.toFixed(0)} tip)
-            </h2>
-            <button
-              onClick={resetHandler}
-              className="bg-red-500 text-white px-6 py-2 rounded-lg hover:bg-red-600 transition-colors"
-            >
-              Reset
-            </button>
-          </div>
+          <Result
+            bill={bill}
+            tipAmount={tipAmount}
+            total={total}
+            resetHandler={resetHandler}
+          />
         ) : (
           <h2 className="text-center text-gray-500">Please enter your bill</h2>
         )}
