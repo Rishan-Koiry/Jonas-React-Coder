@@ -3,7 +3,7 @@ import { useState } from "react";
 import "./App.css";
 
 const App = () => {
-  const [activeIndex, setActiveIndex] = useState(null);
+  const [activeIndex, setActiveIndex] = useState(0);
 
   const handleToggle = (index) => {
     if (activeIndex === index) {
@@ -42,26 +42,6 @@ const App = () => {
       title: "HTML",
       content:
         "HTML (HyperText Markup Language) is the standard markup language used to create web page structures. It organizes content using elements like headings, paragraphs, links, and images.",
-    },
-    {
-      title: "TypeScript",
-      content:
-        "TypeScript is a superset of JavaScript that adds static typing. It helps catch errors at compile-time, improves code maintainability, and is commonly used with frameworks like Angular and React.",
-    },
-    {
-      title: "Django",
-      content:
-        "Django is a high-level Python web framework that encourages rapid development and clean, pragmatic design. It includes built-in features like authentication, ORM, and admin interface.",
-    },
-    {
-      title: "Vue.js",
-      content:
-        "Vue.js is a progressive JavaScript framework for building user interfaces. It’s approachable, flexible, and designed to integrate easily with other libraries or existing projects.",
-    },
-    {
-      title: "Angular",
-      content:
-        "Angular is a TypeScript-based front-end framework developed by Google. It’s used for building scalable, single-page web applications with features like two-way data binding and dependency injection.",
     },
   ];
 
