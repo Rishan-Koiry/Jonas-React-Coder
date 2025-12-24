@@ -27,6 +27,7 @@ export default function App() {
   const [error, setError] = useState("");
   const [query, setQuery] = useState("");
   const [selectedId, setSelectedId] = useState(null);
+  const [sortBy, setSortBy] = useState("added");
 
   useEffect(() => {
     const controller = new AbortController();
@@ -104,6 +105,36 @@ export default function App() {
     setWatched((watched) => watched.filter((movie) => movie.imdbID !== id));
   }
 
+  function handleMoveUp(id) {
+    setWatched((watched) => {
+      const index = watched.findIndex((movie) => movie.imdbID === id);
+      if (index > 0) {
+        const newWatched = [...watched];
+        [newWatched[index - 1], newWatched[index]] = [
+          newWatched[index],
+          newWatched[index - 1],
+        ];
+        return newWatched;
+      }
+      return watched;
+    });
+  }
+
+  function handleMoveDown(id) {
+    setWatched((watched) => {
+      const index = watched.findIndex((movie) => movie.imdbID === id);
+      if (index < watched.length - 1) {
+        const newWatched = [...watched];
+        [newWatched[index], newWatched[index + 1]] = [
+          newWatched[index + 1],
+          newWatched[index],
+        ];
+        return newWatched;
+      }
+      return watched;
+    });
+  }
+
   return (
     <>
       <NavBar>
@@ -144,6 +175,10 @@ export default function App() {
                 watched={watched}
                 onDeleteWatched={handleDeleteWatched}
                 onSelectMovie={handleSelectMovie}
+                onMoveUp={handleMoveUp}
+                onMoveDown={handleMoveDown}
+                sortBy={sortBy}
+                onSetSortBy={setSortBy}
               />
             </>
           )}
@@ -583,27 +618,74 @@ function WatchedSummary({ watched }) {
   );
 }
 
-function WatchedList({ watched, onDeleteWatched, onSelectMovie }) {
+function WatchedList({
+  watched,
+  onDeleteWatched,
+  onSelectMovie,
+  onMoveUp,
+  onMoveDown,
+  sortBy,
+  onSetSortBy,
+}) {
+  // Sort movies based on sortBy state
+  const sortedWatched = [...watched].sort((a, b) => {
+    if (sortBy === "added") return 0; // Keep original order
+    if (sortBy === "title") return a.title.localeCompare(b.title);
+    if (sortBy === "imdbRating") return b.imdbRating - a.imdbRating;
+    if (sortBy === "userRating") return b.userRating - a.userRating;
+    if (sortBy === "runtime") return b.runtime - a.runtime;
+    return 0;
+  });
+
   return (
-    <ul className="list list-watched">
-      {watched.map((movie) => (
-        <WatchedMovie
-          movie={movie}
-          key={movie.imdbID}
-          onDeleteWatched={onDeleteWatched}
-          onSelectMovie={onSelectMovie}
-        />
-      ))}
-    </ul>
+    <>
+      <div className="sort-controls">
+        <label>Sort by:</label>
+        <select value={sortBy} onChange={(e) => onSetSortBy(e.target.value)}>
+          <option value="added">Order Added</option>
+          <option value="title">Title (A-Z)</option>
+          <option value="imdbRating">IMDb Rating</option>
+          <option value="userRating">Your Rating</option>
+          <option value="runtime">Runtime</option>
+        </select>
+      </div>
+      <ul className="list list-watched">
+        {sortedWatched.map((movie, index) => (
+          <WatchedMovie
+            movie={movie}
+            key={movie.imdbID}
+            onDeleteWatched={onDeleteWatched}
+            onSelectMovie={onSelectMovie}
+            onMoveUp={onMoveUp}
+            onMoveDown={onMoveDown}
+            number={index + 1}
+            isFirst={index === 0}
+            isLast={index === sortedWatched.length - 1}
+            canReorder={sortBy === "added"}
+          />
+        ))}
+      </ul>
+    </>
   );
 }
 
-function WatchedMovie({ movie, onDeleteWatched, onSelectMovie }) {
+function WatchedMovie({
+  movie,
+  onDeleteWatched,
+  onSelectMovie,
+  number,
+  onMoveUp,
+  onMoveDown,
+  isFirst,
+  isLast,
+  canReorder,
+}) {
   return (
     <li
       onClick={() => onSelectMovie(movie.imdbID)}
       style={{ cursor: "pointer" }}
     >
+      <span className="movie-number">{number}</span>
       <img src={movie.poster} alt={`${movie.title} poster`} />
       <h3>{movie.title}</h3>
       <div>
@@ -620,6 +702,33 @@ function WatchedMovie({ movie, onDeleteWatched, onSelectMovie }) {
           <span>{movie.runtime} min</span>
         </p>
       </div>
+
+      {canReorder && (
+        <div className="btn-reorder">
+          <button
+            className="btn-move btn-move-up"
+            onClick={(e) => {
+              e.stopPropagation();
+              onMoveUp(movie.imdbID);
+            }}
+            disabled={isFirst}
+            title="Move up"
+          >
+            ▲
+          </button>
+          <button
+            className="btn-move btn-move-down"
+            onClick={(e) => {
+              e.stopPropagation();
+              onMoveDown(movie.imdbID);
+            }}
+            disabled={isLast}
+            title="Move down"
+          >
+            ▼
+          </button>
+        </div>
+      )}
 
       <button
         className="btn-delete"
