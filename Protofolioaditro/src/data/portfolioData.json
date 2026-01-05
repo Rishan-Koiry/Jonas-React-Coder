@@ -1,0 +1,130 @@
+{
+  "personal": {
+    "name": "Aditro Saha",
+    "title": "Python Developer",
+    "tagline": "Building interactive applications with Python",
+    "bio": "I am a passionate developer with a focus on creating efficient and user-friendly applications. I enjoy solving complex problems and continuously learning new technologies to enhance my skills.",
+    "email": "aditro@example.com",
+    "location": "Dhaka, Bangladesh",
+    "profileImage": "/image/profile.png",
+    "aboutImage": "/image/about.png",
+    "resume": "/resume.pdf"
+  },
+  "skills": [
+    {
+      "name": "Python",
+      "category": "Programming Language"
+    },
+    {
+      "name": "Tkinter",
+      "category": "GUI Framework"
+    },
+    {
+      "name": "Pygame",
+      "category": "Game Development"
+    },
+    {
+      "name": "VS Code",
+      "category": "Development Tool"
+    },
+    {
+      "name": "Pandas",
+      "category": "Development Tool"
+    }
+  ],
+  "experience": [
+    {
+      "id": 1,
+      "title": "Python Developer",
+      "company": "Tech Solutions Inc.",
+      "location": "Dhaka, Bangladesh",
+      "startDate": "Jan 2024",
+      "endDate": "Present",
+      "description": "Developing desktop applications using Python and Tkinter. Building automation scripts and tools to improve workflow efficiency.",
+      "responsibilities": [
+        "Designed and developed GUI applications using Tkinter",
+        "Created automation scripts for data processing tasks",
+        "Collaborated with team members to deliver projects on time"
+      ]
+    },
+    {
+      "id": 2,
+      "title": "Junior Developer",
+      "company": "StartUp Hub",
+      "location": "Dhaka, Bangladesh",
+      "startDate": "Jun 2023",
+      "endDate": "Dec 2023",
+      "description": "Worked on various Python projects including game development with Pygame and utility applications.",
+      "responsibilities": [
+        "Developed interactive games using Pygame library",
+        "Wrote clean, maintainable Python code",
+        "Participated in code reviews and team meetings"
+      ]
+    }
+  ],
+  "education": [
+    {
+      "id": 1,
+      "degree": "Bachelor of Science in Computer Science",
+      "institution": "University of Dhaka",
+      "location": "Dhaka, Bangladesh",
+      "startDate": "2020",
+      "endDate": "2024",
+      "description": "Focused on software development, algorithms, and data structures.",
+      "logo": "/university-logo.png"
+    },
+    {
+      "id": 2,
+      "degree": "Higher Secondary Certificate",
+      "institution": "Dhaka College",
+      "location": "Dhaka, Bangladesh",
+      "startDate": "2018",
+      "endDate": "2020",
+      "description": "Completed with a focus on Science.",
+      "logo": "/college-logo.png"
+    }
+  ],
+  "projects": [
+    {
+      "id": 1,
+      "title": "Desktop Task Manager",
+      "description": "A comprehensive task management application built with Python and Tkinter. Features include task creation, categorization, due dates, and progress tracking.",
+      "technologies": ["Python", "Tkinter", "SQLite"],
+      "image": "/project1.png",
+      "github": "https://github.com/aditrosaha/task-manager",
+      "live": ""
+    },
+    {
+      "id": 2,
+      "title": "Space Shooter Game",
+      "description": "An engaging 2D space shooter game developed using Pygame. Includes multiple levels, power-ups, and a scoring system.",
+      "technologies": ["Python", "Pygame"],
+      "image": "/project2.png",
+      "github": "https://github.com/aditrosaha/space-shooter",
+      "live": ""
+    },
+    {
+      "id": 3,
+      "title": "File Organizer",
+      "description": "An automation tool that organizes files in directories based on their extensions. Helps maintain a clean and structured file system.",
+      "technologies": ["Python", "OS Module"],
+      "image": "/project3.png",
+      "github": "https://github.com/aditrosaha/file-organizer",
+      "live": ""
+    },
+    {
+      "id": 4,
+      "title": "Weather Dashboard",
+      "description": "A desktop application that displays weather information using API integration. Features a clean GUI built with Tkinter.",
+      "technologies": ["Python", "Tkinter", "API"],
+      "image": "/project4.png",
+      "github": "https://github.com/aditrosaha/weather-app",
+      "live": ""
+    }
+  ],
+  "socialLinks": {
+    "github": "https://github.com/aditrosaha",
+    "linkedin": "https://linkedin.com/in/aditrosaha",
+    "twitter": "https://twitter.com/aditrosaha"
+  }
+}
