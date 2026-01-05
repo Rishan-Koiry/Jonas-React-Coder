@@ -35,6 +35,7 @@ function Form() {
   const [date, setDate] = useState(new Date());
   const [notes, setNotes] = useState("");
   const [emoji, setEmoji] = useState("");
+  const [countryCode, setCountryCode] = useState("");
   const [geocodingError, setGeocodingError] = useState("");
 
   useEffect(
@@ -59,6 +60,7 @@ function Form() {
 
           setCityName(data.city || data.locality || "");
           setCountry(data.countryName);
+          setCountryCode(data.countryCode);
           setEmoji(convertToEmoji(data.countryCode));
         } catch (err) {
           setGeocodingError(err.message);
@@ -80,6 +82,7 @@ function Form() {
       cityName,
       country,
       emoji,
+      countryCode,
       date,
       notes,
       position: { lat, lng },
@@ -108,7 +111,13 @@ function Form() {
           onChange={(e) => setCityName(e.target.value)}
           value={cityName}
         />
-        <span className={styles.flag}>{emoji}</span>
+        {countryCode && (
+          <img
+            className={styles.flag}
+            src={`https://flagcdn.com/24x18/${countryCode.toLowerCase()}.png`}
+            alt={`Flag of ${country}`}
+          />
+        )}
       </div>
 
       <div className={styles.row}>

@@ -11,7 +11,7 @@ const formatDate = (date) =>
 
 function CityItem({ city }) {
   const { currentCity, deleteCity } = useCities();
-  const { cityName, emoji, date, id, position } = city;
+  const { cityName, emoji, date, id, position, countryCode, country } = city;
 
   function handleClick(e) {
     e.preventDefault();
@@ -26,7 +26,15 @@ function CityItem({ city }) {
         }`}
         to={`${id}?lat=${position.lat}&lng=${position.lng}`}
       >
-        <span className={styles.emoji}>{emoji}</span>
+        {countryCode ? (
+          <img
+            className={styles.emoji}
+            src={`https://flagcdn.com/24x18/${countryCode.toLowerCase()}.png`}
+            alt={`Flag of ${country}`}
+          />
+        ) : (
+          <span className={styles.emoji}>{emoji}</span>
+        )}
         <h3 className={styles.name}>{cityName}</h3>
         <time className={styles.date}>({formatDate(date)})</time>
         <button className={styles.deleteBtn} onClick={handleClick}>
