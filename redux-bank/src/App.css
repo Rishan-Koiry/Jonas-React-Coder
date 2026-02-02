@@ -1,0 +1,100 @@
+.App {
+  font-family: sans-serif;
+  width: 50rem;
+  margin: 10rem auto;
+  padding: 2rem;
+  background-color: #1a1a1a;
+  border-radius: 15px;
+}
+
+h1 {
+  margin-top: 0;
+  text-align: center;
+  color: #61dafb;
+  font-size: 3rem;
+  margin-bottom: 3rem;
+}
+
+h2 {
+  margin-top: 0;
+  text-transform: uppercase;
+  font-size: 1.4rem;
+  margin-bottom: 2rem;
+  color: #ddd;
+}
+
+.inputs {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.inputs div {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+label {
+  font-weight: bold;
+  font-size: 1.1rem;
+  color: #aaa;
+}
+
+input,
+select {
+  font-family: inherit;
+  padding: 0.8rem 1.2rem;
+  border-radius: 5px;
+  border: none;
+  background-color: #2a2a2a;
+  color: #fff;
+  font-size: 1.1rem;
+  flex: 1;
+}
+
+input::placeholder {
+  color: #666;
+}
+
+button {
+  background-color: #61dafb;
+  color: #1a1a1a;
+  border: none;
+  padding: 0.8rem 1.5rem;
+  border-radius: 5px;
+  font-weight: bold;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: all 0.3s;
+}
+
+button:hover {
+  background-color: #4fa8c5;
+}
+
+button:disabled {
+  background-color: #555;
+  cursor: not-allowed;
+  color: #999;
+}
+
+.balance {
+  font-size: 5rem;
+  font-weight: 700;
+  margin: 3rem 0;
+  text-align: center;
+  color: #ffd43b;
+}
+
+.inputs > div {
+  background-color: #242424;
+  border-radius: 7px;
+  padding: 1.5rem;
+}
+
+.inputs > div > div {
+  display: flex;
+  flex-direction: row;
+  gap: 1rem;
+}
