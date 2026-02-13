@@ -13,7 +13,7 @@ const About = ({ setCurrentPage }) => {
             backgroundImage: "url('/about.jpg')",
           }}
         >
-          <div className="absolute inset-0 bg-gradient-to-br from-orange-600/70 to-red-600/60"></div>
+          <div className="absolute inset-0 bg-gradient-to-b from-red-900/60 to-red-800/50"></div>
         </div>
 
         {/* Content */}
@@ -34,8 +34,8 @@ const About = ({ setCurrentPage }) => {
         <div className="container mx-auto max-w-6xl">
           <div className="grid md:grid-cols-2 gap-12 items-center">
             <div>
-              <span className="inline-block bg-orange-100 text-orange-600 px-4 py-2 rounded-full text-sm font-bold mb-4">
-                🍕 EST. 2008
+              <span className="inline-block bg-red-50 text-red-800 px-4 py-2 rounded-full text-sm font-bold mb-4">
+                EST. 2008
               </span>
               <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-6">
                 Our Journey
@@ -57,34 +57,28 @@ const About = ({ setCurrentPage }) => {
               </p>
             </div>
             <div className="relative">
-              <div className="absolute inset-0 bg-gradient-to-br from-orange-400 to-red-500 rounded-3xl transform rotate-3"></div>
+              <div className="absolute inset-0 bg-red-200 rounded-3xl transform rotate-3"></div>
               <div className="relative bg-white p-8 rounded-3xl shadow-2xl">
                 <div className="space-y-6">
                   <div className="flex items-center gap-4">
-                    <div className="text-5xl">🔥</div>
+                    <div className="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center text-red-800 font-bold">900</div>
                     <div>
-                      <div className="text-3xl font-black text-gray-900">
-                        900°F
-                      </div>
-                      <div className="text-gray-600">Wood-Fired Oven</div>
+                      <div className="text-2xl font-bold text-stone-900">900°F</div>
+                      <div className="text-stone-600">Wood-fired oven</div>
                     </div>
                   </div>
                   <div className="flex items-center gap-4">
-                    <div className="text-5xl">⏱️</div>
+                    <div className="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center text-red-800 font-bold">90</div>
                     <div>
-                      <div className="text-3xl font-black text-gray-900">
-                        90 Sec
-                      </div>
-                      <div className="text-gray-600">Perfect Cook Time</div>
+                      <div className="text-2xl font-bold text-stone-900">90 sec</div>
+                      <div className="text-stone-600">Cook time</div>
                     </div>
                   </div>
                   <div className="flex items-center gap-4">
-                    <div className="text-5xl">👨‍🍳</div>
+                    <div className="w-12 h-12 rounded-full bg-red-100 flex items-center justify-center text-red-800 font-bold">15+</div>
                     <div>
-                      <div className="text-3xl font-black text-gray-900">
-                        15+
-                      </div>
-                      <div className="text-gray-600">Years Experience</div>
+                      <div className="text-2xl font-bold text-stone-900">15+ years</div>
+                      <div className="text-stone-600">Experience</div>
                     </div>
                   </div>
                 </div>
@@ -97,7 +91,7 @@ const About = ({ setCurrentPage }) => {
       <div className="bg-white py-20 px-4">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-16">
-            <span className="inline-block bg-orange-100 text-orange-600 px-4 py-2 rounded-full text-sm font-bold mb-4">
+            <span className="inline-block bg-red-50 text-red-800 px-4 py-2 rounded-full text-sm font-bold mb-4">
               WHAT WE BELIEVE
             </span>
             <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">
@@ -109,7 +103,7 @@ const About = ({ setCurrentPage }) => {
           </div>
 
           <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
-            <div className="group bg-gradient-to-br from-orange-50 to-white p-8 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-2 border-orange-200">
+            <div className="group bg-gradient-to-br from-stone-50 to-white p-8 rounded-3xl shadow-lg hover:shadow-2xl transition-all duration-300 hover:-translate-y-2 border-2 border-red-200">
               <div className="text-5xl mb-4">✨</div>
               <h3 className="text-xl font-black text-gray-900 mb-3">
                 Quality First
@@ -156,8 +150,8 @@ const About = ({ setCurrentPage }) => {
       <div className="bg-gradient-to-b from-gray-50 to-white py-20 px-4">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-16">
-            <span className="inline-block bg-orange-100 text-orange-600 px-4 py-2 rounded-full text-sm font-bold mb-4">
-              👨‍🍳 MEET THE MASTERS
+            <span className="inline-block bg-red-50 text-red-800 px-4 py-2 rounded-full text-sm font-bold mb-4">
+              MEET THE TEAM
             </span>
             <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">
               Our Expert Chefs
@@ -182,11 +176,11 @@ const About = ({ setCurrentPage }) => {
                   />
                 </div>
                 <div className="p-6 md:p-8 lg:p-10 flex flex-col justify-center">
-                  <div className="text-4xl lg:text-5xl mb-3 lg:mb-4">👨‍🍳</div>
+                  <div className="w-14 h-14 rounded-full bg-red-100 mb-3 lg:mb-4" />
                   <h3 className="text-2xl md:text-3xl lg:text-3xl font-black text-gray-900 mb-2 lg:mb-3">
                     Marco Rossi
                   </h3>
-                  <p className="text-orange-600 font-bold text-base lg:text-lg mb-3 lg:mb-4">
+                  <p className="text-red-800 font-bold text-base lg:text-lg mb-3 lg:mb-4">
                     Master Chef & Founder
                   </p>
                   <p className="text-gray-600 text-base lg:text-lg leading-relaxed mb-3 lg:mb-4">
@@ -195,8 +189,8 @@ const About = ({ setCurrentPage }) => {
                     to every pie we create. Our wood-fired oven and traditional
                     techniques ensure each pizza is a masterpiece."
                   </p>
-                  <div className="flex items-center gap-2 text-orange-500">
-                    <span>⭐⭐⭐⭐⭐</span>
+                  <div className="flex items-center gap-2 text-red-600">
+                    <span className="text-sm font-medium text-stone-500">5/5</span>
                     <span className="text-gray-600 text-sm">
                       Master Pizzaiolo
                     </span>
@@ -213,7 +207,7 @@ const About = ({ setCurrentPage }) => {
                   <h3 className="text-2xl md:text-3xl lg:text-3xl font-black text-gray-900 mb-2 lg:mb-3">
                     Sofia Martinez
                   </h3>
-                  <p className="text-orange-600 font-bold text-base lg:text-lg mb-3 lg:mb-4">
+                  <p className="text-red-800 font-bold text-base lg:text-lg mb-3 lg:mb-4">
                     Head Pizzaiolo
                   </p>
                   <p className="text-gray-600 text-base lg:text-lg leading-relaxed mb-3 lg:mb-4">
@@ -222,8 +216,8 @@ const About = ({ setCurrentPage }) => {
                     900°F oven is perfectly cooked with that signature
                     crispy-yet-chewy crust."
                   </p>
-                  <div className="flex items-center gap-2 text-orange-500">
-                    <span>⭐⭐⭐⭐⭐</span>
+                  <div className="flex items-center gap-2 text-red-600">
+                    <span className="text-sm font-medium text-stone-500">5/5</span>
                     <span className="text-gray-600 text-sm">
                       15+ Years Experience
                     </span>
@@ -252,11 +246,11 @@ const About = ({ setCurrentPage }) => {
                   />
                 </div>
                 <div className="p-6 md:p-8 lg:p-10 flex flex-col justify-center">
-                  <div className="text-4xl lg:text-5xl mb-3 lg:mb-4">🍕</div>
+                  <div className="w-14 h-14 rounded-full bg-red-100 mb-3 lg:mb-4" />
                   <h3 className="text-2xl md:text-3xl lg:text-3xl font-black text-gray-900 mb-2 lg:mb-3">
                     Antonio Bianchi
                   </h3>
-                  <p className="text-orange-600 font-bold text-base lg:text-lg mb-3 lg:mb-4">
+                  <p className="text-red-800 font-bold text-base lg:text-lg mb-3 lg:mb-4">
                     Sous Chef
                   </p>
                   <p className="text-gray-600 text-base lg:text-lg leading-relaxed mb-3 lg:mb-4">
@@ -264,8 +258,8 @@ const About = ({ setCurrentPage }) => {
                     maintaining quality control. I ensure every ingredient meets
                     our high standards and every pizza tastes perfect."
                   </p>
-                  <div className="flex items-center gap-2 text-orange-500">
-                    <span>⭐⭐⭐⭐⭐</span>
+                  <div className="flex items-center gap-2 text-red-600">
+                    <span className="text-sm font-medium text-stone-500">5/5</span>
                     <span className="text-gray-600 text-sm">
                       Innovation Expert
                     </span>
@@ -278,11 +272,11 @@ const About = ({ setCurrentPage }) => {
             <div className="bg-white rounded-2xl lg:rounded-3xl shadow-xl overflow-hidden hover:shadow-2xl transition-all duration-300">
               <div className="grid md:grid-cols-2 gap-0">
                 <div className="order-2 md:order-1 p-6 md:p-8 lg:p-10 flex flex-col justify-center">
-                  <div className="text-4xl lg:text-5xl mb-3 lg:mb-4">🔥</div>
+                  <div className="w-14 h-14 rounded-full bg-red-100 mb-3 lg:mb-4" />
                   <h3 className="text-2xl md:text-3xl lg:text-3xl font-black text-gray-900 mb-2 lg:mb-3">
                     Giovanni Leone
                   </h3>
-                  <p className="text-orange-600 font-bold text-base lg:text-lg mb-3 lg:mb-4">
+                  <p className="text-red-800 font-bold text-base lg:text-lg mb-3 lg:mb-4">
                     Pizza Chef
                   </p>
                   <p className="text-gray-600 text-base lg:text-lg leading-relaxed mb-3 lg:mb-4">
@@ -290,8 +284,8 @@ const About = ({ setCurrentPage }) => {
                     flavors and authentic techniques from my homeland. Each
                     pizza tells a story of Italian culinary tradition."
                   </p>
-                  <div className="flex items-center gap-2 text-orange-500">
-                    <span>⭐⭐⭐⭐⭐</span>
+                  <div className="flex items-center gap-2 text-red-600">
+                    <span className="text-sm font-medium text-stone-500">5/5</span>
                     <span className="text-gray-600 text-sm">
                       Sicilian Specialist
                     </span>
@@ -324,7 +318,7 @@ const About = ({ setCurrentPage }) => {
                   <h3 className="text-2xl md:text-3xl lg:text-3xl font-black text-gray-900 mb-2 lg:mb-3">
                     Elena Romano
                   </h3>
-                  <p className="text-orange-600 font-bold text-base lg:text-lg mb-3 lg:mb-4">
+                  <p className="text-red-800 font-bold text-base lg:text-lg mb-3 lg:mb-4">
                     Pastry Chef
                   </p>
                   <p className="text-gray-600 text-base lg:text-lg leading-relaxed mb-3 lg:mb-4">
@@ -332,8 +326,8 @@ const About = ({ setCurrentPage }) => {
                     recipes and the finest ingredients. From tiramisu to
                     cannoli, every dessert is made fresh daily with love."
                   </p>
-                  <div className="flex items-center gap-2 text-orange-500">
-                    <span>⭐⭐⭐⭐⭐</span>
+                  <div className="flex items-center gap-2 text-red-600">
+                    <span className="text-sm font-medium text-stone-500">5/5</span>
                     <span className="text-gray-600 text-sm">
                       Dessert Master
                     </span>
@@ -384,7 +378,7 @@ const About = ({ setCurrentPage }) => {
                     experience."
                   </p>
                   <div className="flex items-center gap-2 text-blue-500">
-                    <span>⭐⭐⭐⭐⭐</span>
+                    <span className="text-sm font-medium text-stone-500">5/5</span>
                     <span className="text-gray-600 text-sm">
                       10+ Years Management
                     </span>
@@ -410,7 +404,7 @@ const About = ({ setCurrentPage }) => {
                     dining experience exceeds expectations."
                   </p>
                   <div className="flex items-center gap-2 text-blue-500">
-                    <span>⭐⭐⭐⭐⭐</span>
+                    <span className="text-sm font-medium text-stone-500">5/5</span>
                     <span className="text-gray-600 text-sm">
                       Expert Service
                     </span>
@@ -439,7 +433,7 @@ const About = ({ setCurrentPage }) => {
                   />
                 </div>
                 <div className="p-6 md:p-8 lg:p-10 flex flex-col justify-center">
-                  <div className="text-4xl lg:text-5xl mb-3 lg:mb-4">📞</div>
+                  <div className="w-14 h-14 rounded-full bg-red-100 mb-3 lg:mb-4" />
                   <h3 className="text-2xl md:text-3xl lg:text-3xl font-black text-gray-900 mb-2 lg:mb-3">
                     Maria Santos
                   </h3>
@@ -452,7 +446,7 @@ const About = ({ setCurrentPage }) => {
                     satisfaction is my priority!"
                   </p>
                   <div className="flex items-center gap-2 text-blue-500">
-                    <span>⭐⭐⭐⭐⭐</span>
+                    <span className="text-sm font-medium text-stone-500">5/5</span>
                     <span className="text-gray-600 text-sm">
                       Customer Care Expert
                     </span>
@@ -468,8 +462,8 @@ const About = ({ setCurrentPage }) => {
       <div className="bg-white py-20 px-4">
         <div className="container mx-auto max-w-6xl">
           <div className="text-center mb-12">
-            <span className="inline-block bg-orange-100 text-orange-600 px-4 py-2 rounded-full text-sm font-bold mb-4">
-              📍 FIND US
+            <span className="inline-block bg-red-50 text-red-800 px-4 py-2 rounded-full text-sm font-bold mb-4">
+              FIND US
             </span>
             <h2 className="text-4xl md:text-5xl font-black text-gray-900 mb-4">
               Visit Our Location
@@ -481,9 +475,9 @@ const About = ({ setCurrentPage }) => {
 
           <div className="grid md:grid-cols-2 gap-8 items-center">
             <div className="space-y-6">
-              <div className="bg-gradient-to-br from-orange-50 to-white p-6 rounded-2xl shadow-lg">
+              <div className="bg-gradient-to-br from-stone-50 to-white p-6 rounded-2xl shadow-lg">
                 <div className="flex items-start gap-4">
-                  <div className="text-4xl">📍</div>
+                  <div className="w-10 h-10 rounded-full bg-red-100" />
                   <div>
                     <h3 className="text-xl font-black text-gray-900 mb-2">
                       Address
@@ -499,7 +493,7 @@ const About = ({ setCurrentPage }) => {
                 </div>
               </div>
 
-              <div className="bg-gradient-to-br from-orange-50 to-white p-6 rounded-2xl shadow-lg">
+              <div className="bg-gradient-to-br from-stone-50 to-white p-6 rounded-2xl shadow-lg">
                 <div className="flex items-start gap-4">
                   <div className="text-4xl">🕐</div>
                   <div>
@@ -515,9 +509,9 @@ const About = ({ setCurrentPage }) => {
                 </div>
               </div>
 
-              <div className="bg-gradient-to-br from-orange-50 to-white p-6 rounded-2xl shadow-lg">
+              <div className="bg-gradient-to-br from-stone-50 to-white p-6 rounded-2xl shadow-lg">
                 <div className="flex items-start gap-4">
-                  <div className="text-4xl">📞</div>
+                  <div className="w-10 h-10 rounded-full bg-red-100" />
                   <div>
                     <h3 className="text-xl font-black text-gray-900 mb-2">
                       Contact
@@ -548,17 +542,17 @@ const About = ({ setCurrentPage }) => {
       </div>
 
       {/* CTA Section */}
-      <div className="relative bg-gradient-to-r from-orange-600 via-red-600 to-orange-600 py-20 px-4">
+      <div className="relative bg-red-800 py-20 px-4">
         <div className="container mx-auto max-w-4xl text-center">
           <h2 className="text-4xl md:text-5xl font-black text-white mb-6">
             Ready to Try Our Award-Winning Pizza?
           </h2>
-          <p className="text-xl text-orange-100 mb-8">
+          <p className="text-xl text-red-100 mb-8">
             Join thousands of satisfied customers
           </p>
           <button
             onClick={() => setCurrentPage("menu")}
-            className="bg-white text-orange-600 px-12 py-5 rounded-full font-black text-xl hover:bg-orange-50 transition-all duration-300 shadow-2xl hover:scale-110 transform"
+            className="bg-white text-red-800 px-12 py-5 rounded-full font-black text-xl hover:bg-stone-50 transition-all duration-200 shadow-lg transform"
           >
             View Our Menu →
           </button>

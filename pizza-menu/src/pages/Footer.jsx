@@ -66,7 +66,7 @@ const Footer = ({ setCurrentPage }) => {
               <li>
                 <button
                   onClick={() => handleNavigation("home")}
-                  className="hover:text-orange-500 transition-colors duration-200"
+                  className="hover:text-red-400 transition-colors duration-200"
                 >
                   Home
                 </button>
@@ -74,7 +74,7 @@ const Footer = ({ setCurrentPage }) => {
               <li>
                 <button
                   onClick={() => handleNavigation("about")}
-                  className="hover:text-orange-500 transition-colors duration-200"
+                  className="hover:text-red-400 transition-colors duration-200"
                 >
                   About Us
                 </button>
@@ -82,15 +82,31 @@ const Footer = ({ setCurrentPage }) => {
               <li>
                 <button
                   onClick={() => handleNavigation("menu")}
-                  className="hover:text-orange-500 transition-colors duration-200"
+                  className="hover:text-red-400 transition-colors duration-200"
                 >
                   Menu
                 </button>
               </li>
               <li>
                 <button
+                  onClick={() => handleNavigation("orderhistory")}
+                  className="hover:text-red-400 transition-colors duration-200"
+                >
+                  Order History
+                </button>
+              </li>
+              <li>
+                <button
+                  onClick={() => handleNavigation("cart")}
+                  className="hover:text-red-400 transition-colors duration-200"
+                >
+                  Cart
+                </button>
+              </li>
+              <li>
+                <button
                   onClick={() => handleNavigation("contact")}
-                  className="hover:text-orange-500 transition-colors duration-200"
+                  className="hover:text-red-400 transition-colors duration-200"
                 >
                   Contact
                 </button>
@@ -125,16 +141,16 @@ const Footer = ({ setCurrentPage }) => {
               Contact Us
             </h3>
             <ul className="space-y-2 text-sm">
-              <li className="flex items-start">
-                <span className="mr-2">📍</span>
+              <li className="flex items-start gap-2">
+                <span className="text-stone-500 shrink-0">Address</span>
                 <span>123 Pizza Street, Food City, FC 12345</span>
               </li>
-              <li className="flex items-center">
-                <span className="mr-2">📞</span>
+              <li className="flex items-center gap-2">
+                <span className="text-stone-500 shrink-0">Phone</span>
                 <span>(555) 123-4567</span>
               </li>
-              <li className="flex items-center">
-                <span className="mr-2">✉️</span>
+              <li className="flex items-center gap-2">
+                <span className="text-stone-500 shrink-0">Email</span>
                 <span>hello@pizzark.com</span>
               </li>
             </ul>
@@ -149,21 +165,21 @@ const Footer = ({ setCurrentPage }) => {
           <div className="mt-2 space-x-4">
             <a
               href="#"
-              className="hover:text-orange-500 transition-colors duration-200"
+              className="hover:text-red-400 transition-colors duration-200"
             >
               Privacy Policy
             </a>
             <span>•</span>
             <a
               href="#"
-              className="hover:text-orange-500 transition-colors duration-200"
+              className="hover:text-red-400 transition-colors duration-200"
             >
               Terms of Service
             </a>
             <span>•</span>
             <a
               href="#"
-              className="hover:text-orange-500 transition-colors duration-200"
+              className="hover:text-red-400 transition-colors duration-200"
             >
               Cookie Policy
             </a>

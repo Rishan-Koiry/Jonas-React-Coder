@@ -7,17 +7,13 @@ const Contact = ({ setCurrentPage }) => {
 
   return (
     <>
-      {/* Hero Section */}
+      {/* Hero Section - contact.jpg (Scrabble "CONTACT US" on green) */}
       <div className="relative h-[70vh] min-h-[500px] overflow-hidden">
-        {/* Background Image */}
         <div
-          className="absolute top-0 left-0 w-full h-full bg-cover bg-center bg-no-repeat -z-10"
-          style={{
-            backgroundImage: "url('/contact.jpg')",
-          }}
-        >
-          <div className="absolute inset-0 bg-gradient-to-br from-orange-600/70 to-red-600/60"></div>
-        </div>
+          className="absolute inset-0 bg-cover bg-center bg-no-repeat"
+          style={{ backgroundImage: "url('/contact.jpg')" }}
+        />
+        <div className="absolute inset-0 bg-gradient-to-b from-black/30 via-transparent to-black/20" />
 
         {/* Content */}
         <div className="container mx-auto max-w-4xl text-center relative z-10 h-full flex flex-col justify-center items-center px-4 py-20">
@@ -51,9 +47,9 @@ const Contact = ({ setCurrentPage }) => {
 
               {/* Contact Cards */}
               <div className="space-y-4">
-                <div className="group bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-l-4 border-orange-500">
+                <div className="group bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-l-4 border-red-700">
                   <div className="flex items-start gap-4">
-                    <div className="bg-gradient-to-br from-orange-400 to-red-500 p-4 rounded-xl text-white text-2xl font-black shadow-lg flex items-center justify-center">
+                    <div className="bg-gradient-to-br from-red-600 to-red-700 p-4 rounded-xl text-white text-2xl font-black shadow-lg flex items-center justify-center">
                       <svg
                         className="w-8 h-8"
                         fill="currentColor"
@@ -76,7 +72,7 @@ const Contact = ({ setCurrentPage }) => {
                       <p className="text-gray-600">Food City, FC 12345</p>
                       <a
                         href="#"
-                        className="inline-block mt-2 text-orange-600 font-semibold hover:text-orange-700"
+                        className="inline-block mt-2 text-red-700 font-semibold hover:text-red-800"
                       >
                         Get Directions →
                       </a>
@@ -86,7 +82,7 @@ const Contact = ({ setCurrentPage }) => {
 
                 <div className="group bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-l-4 border-red-500">
                   <div className="flex items-start gap-4">
-                    <div className="bg-gradient-to-br from-red-400 to-orange-500 p-4 rounded-xl text-white text-2xl font-black shadow-lg flex items-center justify-center">
+                    <div className="bg-gradient-to-br from-red-600 to-red-700 p-4 rounded-xl text-white text-2xl font-black shadow-lg flex items-center justify-center">
                       <svg
                         className="w-8 h-8"
                         fill="currentColor"
@@ -101,7 +97,7 @@ const Contact = ({ setCurrentPage }) => {
                       </h3>
                       <a
                         href="tel:5551234567"
-                        className="text-2xl font-black text-orange-600 hover:text-orange-700"
+                        className="text-2xl font-black text-red-700 hover:text-red-800"
                       >
                         (555) 123-4567
                       </a>
@@ -114,7 +110,7 @@ const Contact = ({ setCurrentPage }) => {
 
                 <div className="group bg-white p-6 rounded-2xl shadow-lg hover:shadow-xl transition-all duration-300 hover:-translate-y-1 border-l-4 border-yellow-500">
                   <div className="flex items-start gap-4">
-                    <div className="bg-gradient-to-br from-yellow-400 to-orange-500 p-4 rounded-xl text-white text-2xl font-black shadow-lg flex items-center justify-center">
+                    <div className="bg-gradient-to-br from-red-600 to-red-700 p-4 rounded-xl text-white text-2xl font-black shadow-lg flex items-center justify-center">
                       <svg
                         className="w-8 h-8"
                         fill="currentColor"
@@ -130,7 +126,7 @@ const Contact = ({ setCurrentPage }) => {
                       </h3>
                       <a
                         href="mailto:koiryrishan1@gmail.com"
-                        className="text-xl font-bold text-orange-600 hover:text-orange-700"
+                        className="text-xl font-bold text-red-700 hover:text-red-800"
                       >
                         koiryrishan1@gmail.com
                       </a>
@@ -167,7 +163,7 @@ const Contact = ({ setCurrentPage }) => {
                         <p className="font-semibold">
                           Saturday - Sunday: 10:00 AM - 12:00 AM
                         </p>
-                        <p className="text-sm text-orange-600 font-bold mt-2">
+                        <p className="text-sm text-red-700 font-bold mt-2">
                           Happy Hour: 3-6 PM Daily!
                         </p>
                       </div>
@@ -177,14 +173,14 @@ const Contact = ({ setCurrentPage }) => {
               </div>
 
               {/* Social Media */}
-              <div className="bg-gradient-to-br from-orange-50 to-red-50 p-8 rounded-2xl border-2 border-orange-200">
+              <div className="bg-gradient-to-br from-red-50 to-stone-50 p-8 rounded-2xl border-2 border-red-200">
                 <h3 className="text-2xl font-black text-gray-900 mb-4">
                   Follow Us
                 </h3>
                 <div className="flex gap-4">
                   <a
                     href="#"
-                    className="bg-white p-4 rounded-xl shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 text-orange-600"
+                    className="bg-white p-4 rounded-xl shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 text-red-700"
                   >
                     <svg
                       className="w-6 h-6"
@@ -196,7 +192,7 @@ const Contact = ({ setCurrentPage }) => {
                   </a>
                   <a
                     href="#"
-                    className="bg-white p-4 rounded-xl shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 text-orange-600"
+                    className="bg-white p-4 rounded-xl shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 text-red-700"
                   >
                     <svg
                       className="w-6 h-6"
@@ -208,7 +204,7 @@ const Contact = ({ setCurrentPage }) => {
                   </a>
                   <a
                     href="#"
-                    className="bg-white p-4 rounded-xl shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 text-orange-600"
+                    className="bg-white p-4 rounded-xl shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 text-red-700"
                   >
                     <svg
                       className="w-6 h-6"
@@ -220,7 +216,7 @@ const Contact = ({ setCurrentPage }) => {
                   </a>
                   <a
                     href="#"
-                    className="bg-white p-4 rounded-xl shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 text-orange-600"
+                    className="bg-white p-4 rounded-xl shadow-lg hover:shadow-xl hover:scale-110 transition-all duration-300 text-red-700"
                   >
                     <svg
                       className="w-6 h-6"
@@ -236,7 +232,7 @@ const Contact = ({ setCurrentPage }) => {
 
             {/* Contact Form */}
             <div>
-              <div className="bg-white p-8 rounded-3xl shadow-2xl border-2 border-orange-200">
+              <div className="bg-white p-8 rounded-3xl shadow-2xl border-2 border-red-200">
                 <h2 className="text-3xl font-black text-gray-900 mb-6">
                   Send us a Message
                 </h2>
@@ -259,7 +255,7 @@ const Contact = ({ setCurrentPage }) => {
                       name="name"
                       required
                       placeholder="John Doe"
-                      className="w-full px-5 py-4 border-2 border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-600 focus:border-orange-600 outline-none transition-all text-lg"
+                      className="w-full px-5 py-4 border-2 border-gray-300 rounded-xl focus:ring-2 focus:ring-red-700 focus:border-red-700 outline-none transition-all text-lg"
                     />
                     <ValidationError
                       prefix="Name"
@@ -281,7 +277,7 @@ const Contact = ({ setCurrentPage }) => {
                       name="email"
                       required
                       placeholder="john@example.com"
-                      className="w-full px-5 py-4 border-2 border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-600 focus:border-orange-600 outline-none transition-all text-lg"
+                      className="w-full px-5 py-4 border-2 border-gray-300 rounded-xl focus:ring-2 focus:ring-red-700 focus:border-red-700 outline-none transition-all text-lg"
                     />
                     <ValidationError
                       prefix="Email"
@@ -302,7 +298,7 @@ const Contact = ({ setCurrentPage }) => {
                       type="tel"
                       name="phone"
                       placeholder="(555) 123-4567"
-                      className="w-full px-5 py-4 border-2 border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-600 focus:border-orange-600 outline-none transition-all text-lg"
+                      className="w-full px-5 py-4 border-2 border-gray-300 rounded-xl focus:ring-2 focus:ring-red-700 focus:border-red-700 outline-none transition-all text-lg"
                     />
                     <ValidationError
                       prefix="Phone"
@@ -321,7 +317,7 @@ const Contact = ({ setCurrentPage }) => {
                     <select
                       id="subject"
                       name="subject"
-                      className="w-full px-5 py-4 border-2 border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-600 focus:border-orange-600 outline-none transition-all text-lg"
+                      className="w-full px-5 py-4 border-2 border-gray-300 rounded-xl focus:ring-2 focus:ring-red-700 focus:border-red-700 outline-none transition-all text-lg"
                     >
                       <option>General Inquiry</option>
                       <option>Catering / Party Booking</option>
@@ -344,7 +340,7 @@ const Contact = ({ setCurrentPage }) => {
                       required
                       rows="5"
                       placeholder="Tell us what's on your mind..."
-                      className="w-full px-5 py-4 border-2 border-gray-300 rounded-xl focus:ring-2 focus:ring-orange-600 focus:border-orange-600 outline-none resize-none transition-all text-lg"
+                      className="w-full px-5 py-4 border-2 border-gray-300 rounded-xl focus:ring-2 focus:ring-red-700 focus:border-red-700 outline-none resize-none transition-all text-lg"
                     ></textarea>
                     <ValidationError
                       prefix="Message"
@@ -356,7 +352,7 @@ const Contact = ({ setCurrentPage }) => {
                   <button
                     type="submit"
                     disabled={state.submitting}
-                    className="w-full bg-gradient-to-r from-orange-600 to-red-600 text-white px-8 py-5 rounded-xl font-black text-xl hover:from-orange-700 hover:to-red-700 transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105 transform disabled:opacity-50 disabled:cursor-not-allowed"
+                    className="w-full bg-red-800 text-white px-8 py-5 rounded-xl font-bold text-xl hover:bg-red-900 transition-all duration-300 shadow-xl hover:shadow-2xl hover:scale-105 transform disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {state.submitting ? "Sending..." : "Send Message"}
                   </button>

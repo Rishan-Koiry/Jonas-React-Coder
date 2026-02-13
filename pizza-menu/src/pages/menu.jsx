@@ -5,7 +5,7 @@ import hawaiImage from "../assets/hawalini.png";
 import piparoniImage from "../assets/piparoni.png";
 import veggiImage from "../assets/veggi.png";
 
-const Menu = ({ setCurrentPage, filterType = "all", setMenuFilter }) => {
+const Menu = ({ setCurrentPage, filterType = "all", setMenuFilter, addToCart }) => {
   const [selectedPizza, setSelectedPizza] = React.useState(null);
 
   const pizzas = [
@@ -217,55 +217,55 @@ const Menu = ({ setCurrentPage, filterType = "all", setMenuFilter }) => {
 
   return (
     <>
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen bg-stone-50">
         <div className="py-16 px-4">
           <div className="container mx-auto max-w-6xl">
-            <h1 className="text-4xl md:text-5xl font-bold text-gray-900 text-center mb-4">
+            <h1 className="text-4xl md:text-5xl font-bold text-stone-900 text-center mb-4">
               Our Menu
             </h1>
-            <p className="text-gray-600 text-center mb-8 text-lg">
+            <p className="text-stone-600 text-center mb-8 text-lg">
               {filterType === "hot"
-                ? "🔥 Hot & Trending Pizzas - Most Loved by Our Customers!"
+                ? "Hot & trending — most loved by our customers"
                 : filterType === "all"
-                  ? "All Our Pizzas - Complete Collection"
+                  ? "Our full selection"
                   : filterType === "available"
-                    ? "✓ Available Now - Ready to Order!"
+                    ? "Available now — ready to order"
                     : filterType === "unavailable"
-                      ? "🔥 Hot Pizzas - All Hot Sellers"
-                      : "Discover our delicious selection of pizzas"}
+                      ? "Hot sellers"
+                      : "Discover our selection of pizzas"}
             </p>
 
             {/* Filter Buttons */}
             <div className="flex flex-wrap justify-center gap-3 mb-12">
               <button
                 onClick={() => setMenuFilter("all")}
-                className={`font-semibold transition-all duration-300 text-sm px-6 py-3 rounded-full shadow-md hover:shadow-lg transform hover:scale-105 ${
+                className={`font-semibold transition-all duration-200 text-sm px-6 py-3 rounded-full ${
                   filterType === "all"
-                    ? "text-white bg-gradient-to-r from-blue-500 to-blue-600"
-                    : "text-gray-700 bg-white hover:text-blue-600 hover:bg-blue-50 border-2 border-gray-300"
+                    ? "text-white bg-red-800"
+                    : "text-stone-700 bg-white hover:bg-red-50 hover:text-red-800 border border-stone-300"
                 }`}
               >
-                All Pizza
+                All
               </button>
               <button
                 onClick={() => setMenuFilter("hot")}
-                className={`font-semibold transition-all duration-300 text-sm px-6 py-3 rounded-full shadow-md hover:shadow-lg transform hover:scale-105 flex items-center gap-2 ${
+                className={`font-semibold transition-all duration-200 text-sm px-6 py-3 rounded-full ${
                   filterType === "hot"
-                    ? "text-white bg-gradient-to-r from-red-500 to-orange-600"
-                    : "text-gray-700 bg-white hover:text-red-600 hover:bg-red-50 border-2 border-gray-300"
+                    ? "text-white bg-red-800"
+                    : "text-stone-700 bg-white hover:bg-red-50 hover:text-red-800 border border-stone-300"
                 }`}
               >
-                🔥 Hot Pizza
+                Hot
               </button>
               <button
                 onClick={() => setMenuFilter("available")}
-                className={`font-semibold transition-all duration-300 text-sm px-6 py-3 rounded-full shadow-md hover:shadow-lg transform hover:scale-105 ${
+                className={`font-semibold transition-all duration-300 text-sm px-6 py-3 rounded-full shadow-md hover:shadow-lg ${
                   filterType === "available"
-                    ? "text-white bg-gradient-to-r from-green-500 to-green-600"
-                    : "text-gray-700 bg-white hover:text-green-600 hover:bg-green-50 border-2 border-gray-300"
+                    ? "text-white bg-green-700"
+                    : "text-gray-700 bg-white hover:text-green-700 hover:bg-green-50 border-2 border-gray-300"
                 }`}
               >
-                ✓ All Available Pizza
+                Available
               </button>
             </div>
 
@@ -273,13 +273,13 @@ const Menu = ({ setCurrentPage, filterType = "all", setMenuFilter }) => {
               {filteredPizzas.map((pizza, index) => (
                 <div
                   key={index}
-                  className="bg-white p-6 rounded-2xl shadow-md hover:shadow-2xl transition-all duration-300 cursor-pointer relative group hover:-translate-y-2 border border-gray-100"
+                  className="bg-white p-6 rounded-2xl shadow-sm hover:shadow-xl transition-all duration-300 cursor-pointer relative group hover:-translate-y-1 border border-stone-200/80"
                   onClick={() => setSelectedPizza(pizza)}
                 >
                   {/* Hot Badge */}
                   {pizza.isHot && (
-                    <div className="absolute top-3 right-3 bg-gradient-to-r from-red-500 to-orange-500 text-white px-3 py-1 rounded-full text-xs font-bold flex items-center gap-1 shadow-lg z-10">
-                      🔥 Hot
+                    <div className="absolute top-3 right-3 bg-red-800 text-white px-3 py-1 rounded-full text-xs font-bold z-10">
+                      Hot
                     </div>
                   )}
 
@@ -290,11 +290,11 @@ const Menu = ({ setCurrentPage, filterType = "all", setMenuFilter }) => {
                     </div>
                   )}
 
-                  <div className="relative overflow-hidden rounded-lg mb-4">
+                  <div className="relative overflow-hidden rounded-xl mb-4">
                     <img
                       src={pizza.imagename}
                       alt={pizza.name}
-                      className={`w-full h-48 object-cover transition-transform duration-500 group-hover:scale-110 ${
+                      className={`w-full h-48 object-cover transition-transform duration-500 group-hover:scale-105 ${
                         !pizza.isAvailable ? "opacity-50 grayscale" : ""
                       }`}
                     />
@@ -311,7 +311,7 @@ const Menu = ({ setCurrentPage, filterType = "all", setMenuFilter }) => {
                           : "bg-red-100 text-red-700"
                       }`}
                     >
-                      {pizza.isVeg ? "🌱 Veg" : "🍗 Non-Veg"}
+                      {pizza.isVeg ? "Veg" : "Non-Veg"}
                     </span>
                   </div>
 
@@ -320,21 +320,21 @@ const Menu = ({ setCurrentPage, filterType = "all", setMenuFilter }) => {
                   </p>
 
                   <div className="flex items-center justify-between">
-                    <span className="text-2xl font-bold text-orange-600">
+                    <span className="text-2xl font-bold text-red-800">
                       {pizza.price}
                     </span>
                     <button
-                      className={`px-5 py-2 rounded-full transition-all duration-300 text-sm font-medium shadow-md hover:shadow-lg ${
+                      className={`px-5 py-2.5 rounded-full transition-all duration-200 text-sm font-semibold ${
                         pizza.isAvailable
-                          ? "bg-gradient-to-r from-orange-500 to-orange-600 text-white hover:from-orange-600 hover:to-orange-700 transform hover:scale-105"
-                          : "bg-slate-400 text-white cursor-not-allowed"
+                          ? "bg-red-800 text-white hover:bg-red-900 active:scale-[0.98]"
+                          : "bg-stone-300 text-stone-500 cursor-not-allowed"
                       }`}
                       onClick={(e) => {
                         e.stopPropagation();
-                        setSelectedPizza(pizza);
+                        if (pizza.isAvailable) setSelectedPizza(pizza);
                       }}
                     >
-                      {pizza.isAvailable ? "Order" : "Unavailable"}
+                      {pizza.isAvailable ? "Add to cart" : "Unavailable"}
                     </button>
                   </div>
                 </div>
@@ -347,11 +347,11 @@ const Menu = ({ setCurrentPage, filterType = "all", setMenuFilter }) => {
       {/* Pizza Detail Modal */}
       {selectedPizza && (
         <div
-          className="fixed inset-0 bg-white/30 backdrop-blur-md flex items-center justify-center z-50 p-4"
+          className="fixed inset-0 bg-stone-900/40 backdrop-blur-sm flex items-center justify-center z-50 p-4"
           onClick={() => setSelectedPizza(null)}
         >
           <div
-            className="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-2xl"
+            className="bg-white rounded-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto shadow-xl border border-stone-200"
             onClick={(e) => e.stopPropagation()}
           >
             {/* Modal Header */}
@@ -383,18 +383,18 @@ const Menu = ({ setCurrentPage, filterType = "all", setMenuFilter }) => {
               {/* Badges on Image */}
               <div className="absolute top-4 left-4 flex gap-2">
                 {selectedPizza.isHot && (
-                  <span className="bg-red-500 text-white px-3 py-1 rounded-full text-sm font-bold">
-                    🔥 Hot & Trending
+                  <span className="bg-red-800 text-white px-3 py-1 rounded-full text-sm font-bold">
+                    Hot
                   </span>
                 )}
                 <span
                   className={`px-3 py-1 rounded-full text-sm font-bold ${
                     selectedPizza.isVeg
-                      ? "bg-green-500 text-white"
-                      : "bg-red-500 text-white"
+                      ? "bg-green-700 text-white"
+                      : "bg-red-800 text-white"
                   }`}
                 >
-                  {selectedPizza.isVeg ? "🌱 Vegetarian" : "🍗 Non-Vegetarian"}
+                  {selectedPizza.isVeg ? "Vegetarian" : "Non-Vegetarian"}
                 </span>
               </div>
             </div>
@@ -405,7 +405,7 @@ const Menu = ({ setCurrentPage, filterType = "all", setMenuFilter }) => {
                 <h2 className="text-3xl font-bold text-gray-900">
                   {selectedPizza.name}
                 </h2>
-                <span className="text-3xl font-bold text-orange-600">
+                <span className="text-3xl font-bold text-red-800">
                   {selectedPizza.price}
                 </span>
               </div>
@@ -444,76 +444,61 @@ const Menu = ({ setCurrentPage, filterType = "all", setMenuFilter }) => {
 
               {/* Pizza Info Grid */}
               <div className="grid grid-cols-2 gap-4 mb-6">
-                <div className="bg-gray-50 p-4 rounded-lg">
-                  <p className="text-sm text-gray-600 mb-1">Type</p>
-                  <p className="font-bold text-gray-900">
-                    {selectedPizza.isVeg
-                      ? "🌱 Vegetarian"
-                      : "🍗 Non-Vegetarian"}
+                <div className="bg-stone-50 p-4 rounded-lg">
+                  <p className="text-sm text-stone-600 mb-1">Type</p>
+                  <p className="font-bold text-stone-900">
+                    {selectedPizza.isVeg ? "Vegetarian" : "Non-Vegetarian"}
                   </p>
                 </div>
-                <div className="bg-gray-50 p-4 rounded-lg">
-                  <p className="text-sm text-gray-600 mb-1">Pizza Popularity</p>
-                  <p className="font-bold text-gray-900">
-                    {selectedPizza.isHot ? "🔥 Hot Seller" : "⭐ Regular"}
+                <div className="bg-stone-50 p-4 rounded-lg">
+                  <p className="text-sm text-stone-600 mb-1">Popularity</p>
+                  <p className="font-bold text-stone-900">
+                    {selectedPizza.isHot ? "Hot seller" : "Regular"}
                   </p>
                 </div>
-                <div className="bg-gray-50 p-4 rounded-lg">
-                  <p className="text-sm text-gray-600 mb-1">Status</p>
-                  <p className="font-bold text-gray-900">
-                    {selectedPizza.isAvailable
-                      ? "✅ Available"
-                      : "❌ Unavailable"}
+                <div className="bg-stone-50 p-4 rounded-lg">
+                  <p className="text-sm text-stone-600 mb-1">Status</p>
+                  <p className="font-bold text-stone-900">
+                    {selectedPizza.isAvailable ? "Available" : "Unavailable"}
                   </p>
                 </div>
-
-                <div className="bg-gray-50 p-4 rounded-lg">
-                  <p className="text-sm text-gray-600 mb-1">Price</p>
-                  <p className="font-bold text-orange-600 text-xl">
+                <div className="bg-stone-50 p-4 rounded-lg">
+                  <p className="text-sm text-stone-600 mb-1">Price</p>
+                  <p className="font-bold text-red-800 text-xl">
                     {selectedPizza.price}
                   </p>
                 </div>
-                <div className="bg-gray-50 p-4 rounded-lg">
-                  <p className="text-sm text-gray-600 mb-1">Popularity</p>
-                  <p className="font-bold text-gray-900">
-                    {selectedPizza.isnonhot ? "❌ Non popular " : "✅ Popular "}
-                  </p>
-                </div>
-                <div className="bg-gray-50 p-4 rounded-lg">
-                  <p className="text-sm text-gray-600 mb-1">Popularity</p>
-                  <p className="font-bold text-gray-900">
-                    {selectedPizza.avgrate
-                      ? `⭐ ${selectedPizza.avgrate} / 5`
-                      : "⭐ N/A"}
-                  </p>
-                </div>
+                {selectedPizza.avgrate && (
+                  <div className="bg-stone-50 p-4 rounded-lg col-span-2">
+                    <p className="text-sm text-stone-600 mb-1">Rating</p>
+                    <p className="font-bold text-stone-900">{selectedPizza.avgrate} / 5</p>
+                  </div>
+                )}
               </div>
 
               {/* Action Buttons */}
               <div className="flex gap-3">
                 <button
                   onClick={() => {
-                    if (selectedPizza.isAvailable) {
-                      alert(`Order placed for ${selectedPizza.name}!`);
+                    if (selectedPizza.isAvailable && addToCart) {
+                      addToCart(selectedPizza);
                       setSelectedPizza(null);
-                    } else {
+                    } else if (!selectedPizza.isAvailable) {
                       alert("Sorry, this pizza is currently unavailable.");
                     }
                   }}
                   disabled={!selectedPizza.isAvailable}
                   className={`flex-1 py-3 rounded-full font-bold transition-colors ${
                     selectedPizza.isAvailable
-                      ? "bg-orange-600 text-white hover:bg-orange-700"
-                      : "bg-slate-400 text-white cursor-not-allowed"
+                      ? "bg-red-800 text-white hover:bg-red-900"
+                      : "bg-stone-300 text-stone-500 cursor-not-allowed"
                   }`}
                 >
-                  {selectedPizza.isAvailable
-                    ? "🛒 Order Now"
-                    : "Currently Unavailable"}
+                  {selectedPizza.isAvailable ? "Add to cart" : "Unavailable"}
                 </button>
                 <button
                   onClick={() => setSelectedPizza(null)}
-                  className="px-6 py-3 border-2 border-gray-300 rounded-full font-bold text-gray-700 hover:bg-gray-50 transition-colors"
+                  className="px-6 py-3 border-2 border-stone-300 rounded-full font-bold text-stone-700 hover:bg-stone-50 transition-colors"
                 >
                   Close
                 </button>

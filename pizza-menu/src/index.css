@@ -10,3 +10,10 @@ textarea,
 select {
   cursor: url("/cursor.png"), pointer !important;
 }
+
+/* Production: consistent tap target and transitions */
+@media (prefers-reduced-motion: no-preference) {
+  button, a, [role="button"] {
+    transition: color 0.15s ease, background-color 0.15s ease, transform 0.15s ease, box-shadow 0.15s ease;
+  }
+}

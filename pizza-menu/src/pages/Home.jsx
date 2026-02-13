@@ -9,7 +9,6 @@ const Home = ({ setCurrentPage }) => {
 
   const features = [
     {
-      icon: "🍕",
       title: "Fresh Daily",
       shortDesc:
         "Made with the freshest ingredients sourced daily from local farms",
@@ -17,14 +16,12 @@ const Home = ({ setCurrentPage }) => {
         "We pride ourselves on using only the freshest ingredients, sourced daily from trusted local farms. Our dough is made fresh every morning, and our vegetables are hand-picked for quality. We never compromise on freshness - from our premium mozzarella to our ripe tomatoes, every ingredient is selected with care to ensure the best taste in every bite.",
     },
     {
-      icon: "🔥",
       title: "Wood Fired",
       shortDesc: "Cooked at 900°F in our traditional Italian wood-fired oven",
       fullDesc:
         "Our authentic Italian wood-fired oven reaches temperatures of 900°F, creating the perfect crispy yet chewy crust that you can only get from traditional cooking methods. The intense heat and wood smoke infuse each pizza with a unique, smoky flavor that's impossible to replicate in conventional ovens. This centuries-old technique ensures your pizza is cooked to perfection in just 90 seconds.",
     },
     {
-      icon: "❤️",
       title: "Made with Love",
       shortDesc: "Every pizza is handcrafted by our master chefs with care",
       fullDesc:
@@ -89,48 +86,9 @@ const Home = ({ setCurrentPage }) => {
 
   return (
     <div className="min-h-screen bg-gradient-to-b from-gray-900 to-gray-800">
-      <style>{`
-        @keyframes float {
-          0%, 100% { transform: translateY(0px) rotate(0deg); }
-          50% { transform: translateY(-20px) rotate(10deg); }
-        }
-        @keyframes float-slow {
-          0%, 100% { transform: translateY(0px) rotate(0deg); }
-          50% { transform: translateY(-30px) rotate(-10deg); }
-        }
-        @keyframes float-slower {
-          0%, 100% { transform: translateY(0px) rotate(0deg); }
-          50% { transform: translateY(-25px) rotate(8deg); }
-        }
-        .float-pizza { animation: float 6s ease-in-out infinite; }
-        .float-pizza-slow { animation: float-slow 8s ease-in-out infinite; }
-        .float-pizza-slower { animation: float-slower 7s ease-in-out infinite; }
-      `}</style>
       {/* Hero Section */}
-      <section className="relative bg-gradient-to-br from-orange-600 via-red-600 to-orange-700 py-32 px-4 overflow-hidden">
-        {/* Floating Pizza Slices Background */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="float-pizza absolute top-20 left-10 text-8xl opacity-20">
-            🍕
-          </div>
-          <div className="float-pizza-slow absolute top-40 right-20 text-7xl opacity-15">
-            🍕
-          </div>
-          <div className="float-pizza-slower absolute bottom-32 left-1/4 text-9xl opacity-10">
-            🍕
-          </div>
-          <div className="float-pizza absolute bottom-20 right-10 text-6xl opacity-20">
-            🍕
-          </div>
-          <div className="float-pizza-slow absolute top-1/2 left-1/2 text-8xl opacity-10">
-            🍕
-          </div>
-          <div className="float-pizza-slower absolute top-60 right-1/3 text-7xl opacity-15">
-            🍕
-          </div>
-        </div>
-
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC4wNSI+PHBhdGggZD0iTTM2IDE4YzAgMy4zMTQtMi42ODYgNi02IDZzLTYtMi42ODYtNi02IDIuNjg2LTYgNi02IDYgMi42ODYgNiA2Ii8+PC9nPjwvZz48L3N2Zz4=')] opacity-20"></div>
+      <section className="relative bg-gradient-to-b from-red-900 via-red-800 to-red-900 py-32 px-4 overflow-hidden">
+        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC4wMyI+PHBhdGggZD0iTTM2IDE4YzAgMy4zMTQtMi42ODYgNi02IDZzLTYtMi42ODYtNi02IDIuNjg2LTYgNi02IDYgMi42ODYgNiA2Ii8+PC9nPjwvZz48L3N2Zz4=')] opacity-80"></div>
 
         <div className="container mx-auto max-w-7xl px-4 text-center relative z-10">
           <div className="mb-8 flex justify-center">
@@ -161,10 +119,9 @@ const Home = ({ setCurrentPage }) => {
                       currentTime >= openingTime &&
                       currentTime < closingTime);
                   return (
-                    <div className={`${isOpen ? "" : ""}`}>
-                      {" "}
-                      {isOpen ? "🟢 Open " : "🔴 Closed"}{" "}
-                    </div>
+                    <span className={isOpen ? "text-green-300" : "text-red-300"}>
+                      {isOpen ? "Open" : "Closed"}
+                    </span>
                   );
                 })()}{" "}
               </div>
@@ -175,45 +132,35 @@ const Home = ({ setCurrentPage }) => {
             <h1 className="text-7xl md:text-8xl font-black text-white mb-4 tracking-tight drop-shadow-2xl animate-fade-in">
               Pizza RK
             </h1>
-            <div className="inline-block bg-white/10 backdrop-blur-sm px-6 py-3 rounded-full border border-white/20">
-              <p className="text-2xl md:text-3xl text-yellow-300 font-bold">
-                🔥 “Real Wood-Fire. Real Taste. Real Pizza.” 🔥
-              </p>
-            </div>
-            <p className="text-xl md:text-2xl text-orange-100 max-w-3xl mx-auto leading-relaxed font-medium">
+            <p className="text-xl md:text-2xl text-red-100 max-w-2xl mx-auto leading-relaxed font-medium">
               Handcrafted with passion, baked to perfection in our traditional
               wood-fired oven. Experience the authentic taste of Italy.
             </p>
           </div>
 
-          <div className="flex flex-col sm:flex-row gap-6 justify-center mt-12">
+          <p className="text-lg text-red-200/90 max-w-xl mx-auto mt-4">
+            Real wood-fire. Real taste. Real pizza.
+          </p>
+
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mt-12">
             <button
               onClick={() => setCurrentPage("menu")}
-              className="group relative px-12 py-5 bg-white text-orange-600 hover:bg-orange-50 font-black text-xl rounded-full transition-all duration-300 shadow-2xl hover:shadow-orange-400/50 hover:scale-110 transform overflow-hidden"
+              className="px-10 py-4 bg-white text-red-800 hover:bg-stone-50 font-bold text-lg rounded-full transition-all duration-200 shadow-lg"
             >
-              <span className="relative z-10 flex items-center justify-center gap-2">
-                🍕 Order Now
-              </span>
-              <div className="absolute inset-0 bg-gradient-to-r from-orange-400 to-red-400 opacity-0 group-hover:opacity-10 transition-opacity"></div>
+              Order now
             </button>
             <button
               onClick={() => setCurrentPage("menu")}
-              className="px-12 py-5 bg-white/10 backdrop-blur-sm border-2 border-white/50 text-white hover:bg-white/20 font-bold text-xl rounded-full transition-all duration-300 hover:scale-105 transform"
+              className="px-10 py-4 bg-white/10 border border-white/40 text-white hover:bg-white/20 font-bold text-lg rounded-full transition-all duration-200"
             >
-              View Menu
+              View menu
             </button>
           </div>
 
-          <div className="mt-12 flex items-center justify-center gap-8 text-white/80">
-            <div className="flex items-center gap-2">
-              <span className="text-yellow-400 text-2xl">⭐</span>
-              <span className="font-semibold">4.9/5 Rating</span>
-            </div>
-            <div className="w-px h-6 bg-white/30"></div>
-            <div className="flex items-center gap-2">
-              <span className="text-2xl">👥</span>
-              <span className="font-semibold">10K+ Happy Customers</span>
-            </div>
+          <div className="mt-10 flex items-center justify-center gap-8 text-white/80 text-sm">
+            <span className="font-medium">4.9/5 rating</span>
+            <span className="w-px h-4 bg-white/30" />
+            <span className="font-medium">10K+ customers</span>
           </div>
         </div>
       </section>
@@ -224,7 +171,7 @@ const Home = ({ setCurrentPage }) => {
 
         <div className="container mx-auto max-w-7xl px-4 relative z-10">
           <div className="text-center mb-16">
-            <span className="inline-block bg-orange-100 text-orange-600 px-4 py-2 rounded-full text-sm font-bold mb-4">
+            <span className="inline-block bg-red-50 text-red-800 px-4 py-2 rounded-full text-sm font-bold mb-4">
               WHY CHOOSE US
             </span>
             <h2 className="text-5xl md:text-6xl font-black text-gray-900 mb-6">
@@ -241,21 +188,17 @@ const Home = ({ setCurrentPage }) => {
               <div
                 key={index}
                 onClick={() => setSelectedFeature(feature)}
-                className="group relative bg-white p-10 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 text-center hover:-translate-y-3 border-2 border-transparent hover:border-orange-500 overflow-hidden cursor-pointer"
+                className="group relative bg-white p-10 rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 text-center hover:-translate-y-1 border border-stone-200 hover:border-red-200 overflow-hidden cursor-pointer"
               >
-                <div className="absolute inset-0 bg-gradient-to-br from-orange-50 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
                 <div className="relative z-10">
-                  <div className="text-7xl mb-6 transform group-hover:scale-125 group-hover:rotate-12 transition-all duration-500">
-                    {feature.icon}
-                  </div>
-                  <h3 className="text-2xl font-black text-gray-900 mb-4">
+                  <h3 className="text-2xl font-bold text-stone-900 mb-4">
                     {feature.title}
                   </h3>
                   <p className="text-gray-600 leading-relaxed text-lg">
                     {feature.shortDesc}
                   </p>
-                  <div className="mt-6 inline-flex items-center text-orange-600 font-semibold opacity-0 group-hover:opacity-100 transition-opacity">
-                    Learn more →
+                  <div className="mt-6 inline-flex items-center text-red-800 font-semibold opacity-0 group-hover:opacity-100 transition-opacity">
+                    Learn more
                   </div>
                 </div>
               </div>
@@ -292,8 +235,7 @@ const Home = ({ setCurrentPage }) => {
                 </svg>
               </button>
               <div className="text-center mb-6">
-                <div className="text-8xl mb-4">{selectedFeature.icon}</div>
-                <h3 className="text-4xl font-black text-gray-900 mb-4">
+                <h3 className="text-3xl font-bold text-stone-900 mb-4">
                   {selectedFeature.title}
                 </h3>
               </div>
@@ -302,9 +244,9 @@ const Home = ({ setCurrentPage }) => {
               </p>
               <button
                 onClick={() => setSelectedFeature(null)}
-                className="mt-8 w-full bg-gradient-to-r from-orange-600 to-red-600 text-white py-4 rounded-full font-bold text-lg hover:from-orange-700 hover:to-red-700 transition-all"
+                className="mt-8 w-full bg-red-800 text-white py-4 rounded-full font-bold text-lg hover:bg-red-900 transition-all"
               >
-                Got it!
+                Close
               </button>
             </div>
           </div>
@@ -312,28 +254,28 @@ const Home = ({ setCurrentPage }) => {
       </section>
 
       {/* Stats Section */}
-      <section className="py-20 px-4 bg-gradient-to-r from-orange-600 via-red-600 to-orange-600">
+      <section className="py-20 px-4 bg-red-800">
         <div className="container mx-auto max-w-7xl px-4">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8">
             <div className="text-center">
               <div className="text-5xl font-black text-white mb-2">10K+</div>
-              <div className="text-orange-100 font-semibold">
+              <div className="text-red-100 font-semibold">
                 Happy Customers
               </div>
             </div>
             <div className="text-center">
               <div className="text-5xl font-black text-white mb-2">15+</div>
-              <div className="text-orange-100 font-semibold">
+              <div className="text-red-100 font-semibold">
                 Years Experience
               </div>
             </div>
             <div className="text-center">
               <div className="text-5xl font-black text-white mb-2">50+</div>
-              <div className="text-orange-100 font-semibold">Menu Items</div>
+              <div className="text-red-100 font-semibold">Menu Items</div>
             </div>
             <div className="text-center">
               <div className="text-5xl font-black text-white mb-2">4.9★</div>
-              <div className="text-orange-100 font-semibold">
+              <div className="text-red-100 font-semibold">
                 Average Rating
               </div>
             </div>
@@ -345,8 +287,8 @@ const Home = ({ setCurrentPage }) => {
       <section className="py-24 px-4 bg-gradient-to-b from-white to-gray-50 relative">
         <div className="container mx-auto max-w-7xl px-4">
           <div className="text-center mb-16">
-            <span className="inline-block bg-yellow-100 text-yellow-800 px-4 py-2 rounded-full text-sm font-bold mb-4">
-              ⭐ TESTIMONIALS
+            <span className="inline-block bg-stone-100 text-stone-700 px-4 py-2 rounded-full text-sm font-bold mb-4">
+              TESTIMONIALS
             </span>
             <h2 className="text-5xl md:text-6xl font-black text-gray-900 mb-6">
               What Our Customers Say
@@ -360,7 +302,7 @@ const Home = ({ setCurrentPage }) => {
             {/* Navigation Buttons */}
             <button
               onClick={prevTestimonial}
-              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 bg-white hover:bg-orange-500 hover:text-white text-gray-900 rounded-full p-4 shadow-xl hover:shadow-2xl transition-all duration-300 group"
+              className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 z-10 bg-white hover:bg-red-800 hover:text-white text-stone-900 rounded-full p-4 shadow-lg transition-all duration-200"
             >
               <svg
                 className="w-6 h-6"
@@ -379,7 +321,7 @@ const Home = ({ setCurrentPage }) => {
 
             <button
               onClick={nextTestimonial}
-              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 bg-white hover:bg-orange-500 hover:text-white text-gray-900 rounded-full p-4 shadow-xl hover:shadow-2xl transition-all duration-300 group"
+              className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 z-10 bg-white hover:bg-red-800 hover:text-white text-stone-900 rounded-full p-4 shadow-lg transition-all duration-200"
             >
               <svg
                 className="w-6 h-6"
@@ -405,16 +347,11 @@ const Home = ({ setCurrentPage }) => {
                 return (
                   <div
                     key={index}
-                    className="group relative bg-white p-8 rounded-3xl shadow-xl hover:shadow-2xl transition-all duration-500 hover:-translate-y-2 border-l-4 border-orange-500 overflow-hidden"
+                    className="group relative bg-white p-8 rounded-2xl shadow-md hover:shadow-lg transition-all duration-300 border-l-4 border-red-800 overflow-hidden"
                   >
-                    {/* Corner hover effect - starts as small light yellow and expands */}
-                    <div className="absolute top-0 right-0 w-16 h-16 group-hover:w-48 group-hover:h-48 bg-gradient-to-br from-yellow-300 via-yellow-200 to-transparent rounded-bl-full transition-all duration-500 ease-out opacity-30 group-hover:opacity-60"></div>
-                    <div className="absolute top-0 right-0 w-20 h-20 group-hover:w-56 group-hover:h-56 bg-gradient-to-br from-orange-300 via-yellow-100 to-transparent rounded-bl-full transition-all duration-700 ease-out opacity-20 group-hover:opacity-40"></div>
                     <div className="relative z-10">
-                      <div className="flex mb-6 text-2xl">
-                        <span className="text-yellow-400">
-                          {"⭐".repeat(testimonial.rating)}
-                        </span>
+                      <div className="flex mb-4 text-sm font-medium text-stone-500">
+                        {testimonial.rating}/5
                       </div>
                       <p className="text-gray-700 mb-6 leading-relaxed text-lg font-medium">
                         "{testimonial.text}"
@@ -423,7 +360,7 @@ const Home = ({ setCurrentPage }) => {
                         <img
                           src={testimonial.avatar}
                           alt={testimonial.name}
-                          className="w-14 h-14 rounded-full mr-4 shadow-lg ring-2 ring-orange-400"
+                          className="w-14 h-14 rounded-full mr-4 shadow-md ring-2 ring-stone-200"
                         />
                         <div>
                           <div className="font-bold text-gray-900 text-lg">
@@ -446,11 +383,11 @@ const Home = ({ setCurrentPage }) => {
                 <button
                   key={index}
                   onClick={() => setCurrentTestimonial(index)}
-                  className={`w-3 h-3 rounded-full transition-all duration-300 ${
-                    index === currentTestimonial
-                      ? "bg-orange-600 w-8"
-                      : "bg-gray-300 hover:bg-orange-400"
-                  }`}
+                    className={`w-3 h-3 rounded-full transition-all duration-300 ${
+                      index === currentTestimonial
+                        ? "bg-red-800 w-8"
+                        : "bg-stone-300 hover:bg-red-300"
+                    }`}
                 />
               ))}
             </div>
@@ -459,61 +396,32 @@ const Home = ({ setCurrentPage }) => {
       </section>
 
       {/* Call to Action Section */}
-      <section className="relative bg-gradient-to-br from-orange-600 via-red-600 to-orange-700 py-32 px-4 overflow-hidden">
-        {/* Floating Pizza Slices */}
-        <div className="absolute inset-0 overflow-hidden pointer-events-none">
-          <div className="float-pizza-slow absolute top-10 left-20 text-7xl opacity-15">
-            🍕
-          </div>
-          <div className="float-pizza absolute top-20 right-32 text-6xl opacity-20">
-            🍕
-          </div>
-          <div className="float-pizza-slower absolute bottom-20 left-10 text-8xl opacity-10">
-            🍕
-          </div>
-          <div className="float-pizza absolute bottom-32 right-20 text-7xl opacity-15">
-            🍕
-          </div>
-        </div>
-
-        <div className="absolute inset-0 bg-[url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNjAiIGhlaWdodD0iNjAiIHZpZXdCb3g9IjAgMCA2MCA2MCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZyBmaWxsPSJub25lIiBmaWxsLXJ1bGU9ImV2ZW5vZGQiPjxnIGZpbGw9IiNmZmZmZmYiIGZpbGwtb3BhY2l0eT0iMC4xIj48Y2lyY2xlIGN4PSIzMCIgY3k9IjMwIiByPSI1Ii8+PC9nPjwvZz48L3N2Zz4=')] opacity-30"></div>
-
-        <div className="container mx-auto max-w-5xl text-center relative z-10">
-          <div className="inline-block mb-6">
-            <div className="bg-gradient-to-r from-yellow-400 to-yellow-500 text-red-900 font-black text-base px-6 py-3 rounded-full shadow-xl flex items-center gap-2">
-              <span className="text-2xl">🎉</span>
-              <span>SPECIAL FIRST ORDER DISCOUNT</span>
-            </div>
-          </div>
-
-          <h2 className="text-5xl md:text-7xl font-black text-white mb-6 drop-shadow-2xl leading-tight">
-            Ready to Experience
-            <br />
-            Pizza Perfection?
-          </h2>
-
-          <p className="text-2xl md:text-3xl text-orange-100 mb-4 font-bold">
-            Get 10% OFF your first order!
+      <section className="relative bg-red-800 py-24 px-4">
+        <div className="container mx-auto max-w-3xl text-center relative z-10">
+          <p className="text-red-200 text-sm font-semibold uppercase tracking-wider mb-4">
+            First order offer
           </p>
 
-          <p className="text-lg text-orange-200 mb-12 max-w-2xl mx-auto">
-            Order now and discover why we're the most loved pizza place in town
+          <h2 className="text-4xl md:text-5xl font-bold text-white mb-4 leading-tight">
+            Ready to try us?
+          </h2>
+
+          <p className="text-xl text-red-100 mb-2">
+            10% off your first order.
+          </p>
+
+          <p className="text-red-200/90 mb-10 max-w-lg mx-auto">
+            Order now and discover why we're the most loved pizza place in town.
           </p>
 
           <button
             onClick={() => setCurrentPage("menu")}
-            className="group relative px-16 py-6 bg-white text-orange-600 hover:bg-orange-50 font-black text-2xl rounded-full transition-all duration-300 shadow-2xl hover:shadow-orange-300 hover:scale-110 transform overflow-hidden"
+            className="px-12 py-4 bg-white text-red-800 hover:bg-stone-50 font-bold text-lg rounded-full transition-all duration-200 shadow-lg"
           >
-            <span className="relative z-10 flex items-center justify-center gap-3">
-              <span>View Our Menu</span>
-              <span className="text-3xl group-hover:rotate-12 transition-transform">
-                🍕
-              </span>
-            </span>
-            <div className="absolute inset-0 bg-gradient-to-r from-orange-400 to-red-400 opacity-0 group-hover:opacity-10 transition-opacity"></div>
+            View menu
           </button>
 
-          <div className="mt-8 flex items-center justify-center gap-4 text-orange-100">
+          <div className="mt-8 flex items-center justify-center gap-4 text-red-200 text-sm">
             <span className="flex items-center gap-2">
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                 <path
@@ -524,7 +432,7 @@ const Home = ({ setCurrentPage }) => {
               </svg>
               No code needed
             </span>
-            <span className="w-px h-4 bg-orange-300"></span>
+            <span className="w-px h-4 bg-red-300/50"></span>
             <span className="flex items-center gap-2">
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                 <path
@@ -535,7 +443,7 @@ const Home = ({ setCurrentPage }) => {
               </svg>
               Applied automatically
             </span>
-            <span className="w-px h-4 bg-orange-300"></span>
+            <span className="w-px h-4 bg-red-300/50"></span>
             <span className="flex items-center gap-2">
               <svg className="w-5 h-5" fill="currentColor" viewBox="0 0 20 20">
                 <path
