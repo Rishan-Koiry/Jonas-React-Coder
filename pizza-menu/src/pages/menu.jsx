@@ -227,12 +227,12 @@ const Menu = ({ setCurrentPage, filterType = "all", setMenuFilter }) => {
               {filterType === "hot"
                 ? "🔥 Hot & Trending Pizzas - Most Loved by Our Customers!"
                 : filterType === "all"
-                ? "All Our Pizzas - Complete Collection"
-                : filterType === "available"
-                ? "✓ Available Now - Ready to Order!"
-                : filterType === "unavailable"
-                ? "🔥 Hot Pizzas - All Hot Sellers"
-                : "Discover our delicious selection of pizzas"}
+                  ? "All Our Pizzas - Complete Collection"
+                  : filterType === "available"
+                    ? "✓ Available Now - Ready to Order!"
+                    : filterType === "unavailable"
+                      ? "🔥 Hot Pizzas - All Hot Sellers"
+                      : "Discover our delicious selection of pizzas"}
             </p>
 
             {/* Filter Buttons */}
